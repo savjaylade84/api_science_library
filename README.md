@@ -50,15 +50,6 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 | `GET` | `/books/by-author/<author>` | Get books by author | None | `[{author_books}]` |
 | `GET` | `/books/by-subject/<subject>` | Get books by subject | None | `[{subject_books}]` |
 
-### 👩‍🔬 Researchers Management
-
-| Method | Endpoint | Description | Request Body | Response |
-|--------|-----------|-------------|--------------|----------|
-| `GET` | `/researchers` | Get all researchers | None | `[{researcher1}, {researcher2}, ...]` |
-| `GET` | `/researchers/<id>` | Get researcher by ID | None | `{researcher_data}` |
-| `POST` | `/researchers/add` | Add new researcher | `{"name": "Name", "field": "Physics"}` | `{"message": "Researcher added"}` |
-| `PUT` | `/researchers/update/<id>` | Update researcher | `{"field": "New Field"}` | `{"message": "Researcher updated"}` |
-| `DELETE` | `/researchers/delete/<id>` | Delete researcher | None | `{"message": "Researcher deleted"}` |
 
 ### 📊 Statistics
 
