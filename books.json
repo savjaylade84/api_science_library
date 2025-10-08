@@ -1,0 +1,244 @@
+{
+  "science_books": [
+    {
+      "id": 1,
+      "title": "A Brief History of Time",
+      "author": "Stephen Hawking",
+      "subject": "Physics",
+      "year": 1988,
+      "isbn": "9780553380163"
+    },
+    {
+      "id": 2,
+      "title": "The Selfish Gene",
+      "author": "Richard Dawkins",
+      "subject": "Biology",
+      "year": 1976,
+      "isbn": "9780199291151"
+    },
+    {
+      "id": 3,
+      "title": "Cosmos",
+      "author": "Carl Sagan",
+      "subject": "Astronomy",
+      "year": 1980,
+      "isbn": "9780345331359"
+    },
+    {
+      "id": 4,
+      "title": "The Origin of Species",
+      "author": "Charles Darwin",
+      "subject": "Evolution",
+      "year": 1859,
+      "isbn": "9781509827695"
+    },
+    {
+      "id": 5,
+      "title": "The Double Helix",
+      "author": "James D. Watson",
+      "subject": "Genetics",
+      "year": 1968,
+      "isbn": "9780684852799"
+    },
+    {
+      "id": 6,
+      "title": "Silent Spring",
+      "author": "Rachel Carson",
+      "subject": "Environmental Science",
+      "year": 1962,
+      "isbn": "9780618249060"
+    },
+    {
+      "id": 7,
+      "title": "The Structure of Scientific Revolutions",
+      "author": "Thomas S. Kuhn",
+      "subject": "Philosophy of Science",
+      "year": 1962,
+      "isbn": "9780226458120"
+    },
+    {
+      "id": 8,
+      "title": "Pale Blue Dot",
+      "author": "Carl Sagan",
+      "subject": "Astronomy",
+      "year": 1994,
+      "isbn": "9780345376596"
+    },
+    {
+      "id": 9,
+      "title": "The Elegant Universe",
+      "author": "Brian Greene",
+      "subject": "Physics",
+      "year": 1999,
+      "isbn": "9780393338102"
+    },
+    {
+      "id": 10,
+      "title": "The Gene: An Intimate History",
+      "author": "Siddhartha Mukherjee",
+      "subject": "Genetics",
+      "year": 2016,
+      "isbn": "9781476733524"
+    },
+    {
+      "id": 11,
+      "title": "The Immortal Life of Henrietta Lacks",
+      "author": "Rebecca Skloot",
+      "subject": "Biology",
+      "year": 2010,
+      "isbn": "9781400052189"
+    },
+    {
+      "id": 12,
+      "title": "Surely You’re Joking, Mr. Feynman!",
+      "author": "Richard P. Feynman",
+      "subject": "Physics",
+      "year": 1985,
+      "isbn": "9780393316049"
+    },
+    {
+      "id": 13,
+      "title": "Guns, Germs, and Steel",
+      "author": "Jared Diamond",
+      "subject": "Anthropology",
+      "year": 1997,
+      "isbn": "9780393317558"
+    },
+    {
+      "id": 14,
+      "title": "The Sixth Extinction",
+      "author": "Elizabeth Kolbert",
+      "subject": "Environmental Science",
+      "year": 2014,
+      "isbn": "9781250062185"
+    },
+    {
+      "id": 15,
+      "title": "The Demon-Haunted World",
+      "author": "Carl Sagan",
+      "subject": "Science Communication",
+      "year": 1995,
+      "isbn": "9780345409461"
+    },
+    {
+      "id": 16,
+      "title": "The Blind Watchmaker",
+      "author": "Richard Dawkins",
+      "subject": "Evolution",
+      "year": 1986,
+      "isbn": "9780393351491"
+    },
+    {
+      "id": 17,
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "subject": "Psychology",
+      "year": 2011,
+      "isbn": "9780374533557"
+    },
+    {
+      "id": 18,
+      "title": "The Emperor of All Maladies",
+      "author": "Siddhartha Mukherjee",
+      "subject": "Medicine",
+      "year": 2010,
+      "isbn": "9781439170915"
+    },
+    {
+      "id": 19,
+      "title": "Brief Answers to the Big Questions",
+      "author": "Stephen Hawking",
+      "subject": "Physics",
+      "year": 2018,
+      "isbn": "9781984819192"
+    },
+    {
+      "id": 20,
+      "title": "The Order of Time",
+      "author": "Carlo Rovelli",
+      "subject": "Physics",
+      "year": 2018,
+      "isbn": "9780735216105"
+    },
+    {
+      "id": 21,
+      "title": "The Fabric of the Cosmos",
+      "author": "Brian Greene",
+      "subject": "Physics",
+      "year": 2004,
+      "isbn": "9780375727207"
+    },
+    {
+      "id": 22,
+      "title": "On the Origin of Time",
+      "author": "Thomas Hertog",
+      "subject": "Cosmology",
+      "year": 2023,
+      "isbn": "9780593420393"
+    },
+    {
+      "id": 23,
+      "title": "Why We Sleep",
+      "author": "Matthew Walker",
+      "subject": "Neuroscience",
+      "year": 2017,
+      "isbn": "9781501144318"
+    },
+    {
+      "id": 24,
+      "title": "The Body: A Guide for Occupants",
+      "author": "Bill Bryson",
+      "subject": "Biology",
+      "year": 2019,
+      "isbn": "9780385539302"
+    },
+    {
+      "id": 25,
+      "title": "Astrophysics for People in a Hurry",
+      "author": "Neil deGrasse Tyson",
+      "subject": "Astrophysics",
+      "year": 2017,
+      "isbn": "9780393609394"
+    },
+    {
+      "id": 26,
+      "title": "Chaos: Making a New Science",
+      "author": "James Gleick",
+      "subject": "Mathematics",
+      "year": 1987,
+      "isbn": "9780143113454"
+    },
+    {
+      "id": 27,
+      "title": "Hidden Figures",
+      "author": "Margot Lee Shetterly",
+      "subject": "History of Science",
+      "year": 2016,
+      "isbn": "9780062363602"
+    },
+    {
+      "id": 28,
+      "title": "The Man Who Knew Infinity",
+      "author": "Robert Kanigel",
+      "subject": "Mathematics",
+      "year": 1991,
+      "isbn": "9781476763491"
+    },
+    {
+      "id": 29,
+      "title": "What If?: Serious Scientific Answers to Absurd Hypothetical Questions",
+      "author": "Randall Munroe",
+      "subject": "General Science",
+      "year": 2014,
+      "isbn": "9780544272996"
+    },
+    {
+      "id": 30,
+      "title": "The Immune System: A Very Short Introduction",
+      "author": "Paul Klenerman",
+      "subject": "Immunology",
+      "year": 2017,
+      "isbn": "9780198753902"
+    }
+  ]
+}
