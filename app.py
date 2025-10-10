@@ -62,7 +62,7 @@ def find_books():
 def search_books():
 
     # get the query parameters
-    id:int = int(request.args.get('id'))
+    id:int = request.args.get('id')
     title:str = request.args.get('title')
     author:str = request.args.get('author')
     subject:str = request.args.get('subject')
@@ -72,18 +72,18 @@ def search_books():
     query:dict = {}
 
     #check which parameters are provided and build the query accordingly
-    if not id is None:
-        query["id"] = id
-    if not title is None:
-        query["title"] = title
-    if not author is None:
-        query["author"] = author
-    if not subject is None:
-        query["subject"] = subject
-    if not publisher is None:
-        query["publisher"] = publisher
-    if not isbn is None:
-        query["isbn"] = isbn
+    if id:
+        query.update({"id": id})
+    if title: 
+        query.update({"title": title})
+    if author:
+        query.update({"author": author})
+    if subject:
+        query.update({"subject": subject})
+    if publisher:
+        query.update({"publisher": publisher})
+    if isbn:
+        query.update({"isbn": isbn})
 
     return jsonify(mongo.db.books.find(query))
 
