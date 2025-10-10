@@ -73,7 +73,7 @@ def search_books():
 
     #check which parameters are provided and build the query accordingly
     if id:
-        query.update({"id": id})
+        query.update({"id": int(id)})
     if title: 
         query.update({"title": title})
     if author:
