@@ -1,4 +1,4 @@
-## 🧪 Science Library API (Flask) - under-developement 
+## 🧪 Science Library API (Flask) - Under-Developement 
 
 A simple and lightweight **Flask RESTful API** for managing a **science library**, including books.  
 Built with Python and MongoDB, designed for learning clean, modular API development.
