@@ -16,7 +16,6 @@ class BookSchema(Schema):
     year = fields.Int(required=True)
     isbn = fields.Str(required=True)
 
-
 def find_all_books_in_db() -> dict:
     return mongo.db.books.find()
 
@@ -29,8 +28,6 @@ def delete_book_in_db(book_id) -> dict:
         return {"Message": "Book deleted successfully!"}
     else:
         return {"Error": "Book not found!"}, 404
-
-
 
 def search_books_in_db(key:str, value) -> dict:
     return mongo.db.books.find({key: value})
@@ -55,8 +52,6 @@ def add_book():
 @app.route('/books/view_all', methods=['GET'])
 def find_books():
     return jsonify(find_all_books_in_db())
-
-
 
 @app.route('/books/search', methods=['GET'])
 def search_books():
