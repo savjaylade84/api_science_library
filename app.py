@@ -34,7 +34,10 @@ def search_books_in_db(query:dict) -> dict:
     return mongo.db.books.find(dict)
 
 def find_author_in_db(author:str) -> dict:
-    return mongo.db.books.find_one({"author":author})
+    return mongo.db.books.find({"author":author})
+
+def find_subject_in_db(subject: str) -> dict:
+    return mongo.db.books.find({"subject":subject})
 
 # this will add book in the database
 @app.route('/books/add', methods=['POST'])
@@ -90,6 +93,11 @@ def search_books():
 def find_author():
     author: str = request.args.get('author',type=str)
     return jsonify(find_author_in_db(author))
+
+@app.route('/books/subject',methods=['GET'])
+def find_subject():
+    subject: str = request.args.get('subject')
+    return jsonify(find_subject_in_db(subject))
 
 @app.route('/books/view', methods=['GET'])
 def find_book():

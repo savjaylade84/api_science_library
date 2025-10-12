@@ -38,7 +38,7 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 |--------|-----------|-------------|--------------|----------|----------|
 | `GET` | `/books/view_all` | Get all books | None | `[{book1}, {book2}, ...]` | ✅ Done |
 | `GET` | `/books/view?book_id<id>` | Get book by ID | None | `{book_data}` | ✅ Done |
-| `POST` | `/books/add` | Add new book | `{"title": "Book", "author": "Author", "year": 2023}` | `{"message": "Book added", "id": "123"}` | 🚧 In Progress |
+| `POST` | `/books/add` | Add new book | `{"title": "Book", "author": "Author", "year": 2023}` | `{"message": "Book added", "id": "123"}` | ✅ Done |
 | `PUT` | `/books/update?book_id=<id>` | Update book | `{"title": "New Title"}` | `{"message": "Book updated"}` | 🚧 In Progress |
 | `DELETE` | `/books/delete?book_id=<id>` | Delete book | None | `{"message": "Book deleted"}` | ✅ Done |
 
@@ -48,8 +48,8 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 |--------|-----------|-------------|------------|----------|----------|
 | `GET` | `/books/search` | Search books | `?q=search_term` | `[{matching_books}]` | ✅ Done |
 | `GET` | `/books/filter` | Filter books | `?author=name&subject=physics` | `[{filtered_books}]` | ✅ Done |
-| `GET` | `/books/author/` | Get books by author | `?author=name` | `[{author_books}]` | 🚧 In Progress |
-| `GET` | `/books/subject/` | Get books by subject | `?subject=name` | `[{subject_books}]` | 🚧 In Progress |
+| `GET` | `/books/author` | Get books by author | `?author=name` | `[{author_books}]` | ✅ Done |
+| `GET` | `/books/subject` | Get books by subject | `?subject=name` | `[{subject_books}]` | ✅ Done |
 
 ### 📊 Statistics
 
