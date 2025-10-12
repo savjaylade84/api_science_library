@@ -7,15 +7,19 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/science_library"
 mongo = PyMongo(app)
 
+mongo.db.books.create_index("id",unique=True)
+mongo.db.books.create_index("isbn",unique=True)
+
 # this will make sure the user inputs are validated
 class BookSchema(Schema):
     id = fields.Int(required=True)
     title = fields.Str(required=True)
     author = fields.Str(required=True)
-    subject = fields.Str(required=True)
     year = fields.Int(required=True)
     isbn = fields.Str(required=True)
-
+    subject = fields.Str(required=True)
+    copies_available = fields.Int(required=True)
+    publisher = fields.Str(required=True)
 
 def find_all_books_in_db() -> dict:
     return mongo.db.books.find()
@@ -31,7 +35,7 @@ def delete_book_in_db(book_id) -> dict:
         return {"Error": "Book not found!"}, 404
 
 def search_books_in_db(query:dict) -> dict:
-    return mongo.db.books.find(dict)
+    return mongo.db.books.find(query,{"id":0})
 
 def find_author_in_db(author:str) -> dict:
     return mongo.db.books.find({"author":author})
@@ -67,25 +71,38 @@ def search_books():
     id:int = request.args.get('id',type=int)
     title:str = request.args.get('title',type=str)
     author:str = request.args.get('author',type=str)
-    subject:str = request.args.get('subject',type=str)
-    publisher:str = request.args.get('publisher',type=str)
+    year:int = request.args.get('year',type=int)
     isbn:str = request.args.get('isbn',type=str)
+    subject:str = request.args.get('subject',type=str)
+    copies:int = request.args.get('copies',type=int)
+    publisher:str = request.args.get('publisher',type=str)
 
     query:dict = {}
 
     #check which parameters are provided and build the query accordingly
     if id:
-        query.update({"id": int(id)})
-    if title: 
-        query.update({"title": title})
+        query['id'] = int(id)
+    
+    if title:
+        query['title'] = title
+
     if author:
-        query.update({"author": author})
-    if subject:
-        query.update({"subject": subject})
-    if publisher:
-        query.update({"publisher": publisher})
+        query['author'] = author
+
+    if year:
+        query['year'] = int(year)
+
     if isbn:
-        query.update({"isbn": isbn})
+        query['isbn'] = isbn
+
+    if subject:
+        query['subject'] = subject
+
+    if copies:
+        query['copies_available'] = int(copies)
+
+    if publisher:
+        query['publisher'] = publisher
 
     return jsonify(search_books_in_db(query))
 
