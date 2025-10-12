@@ -29,8 +29,11 @@ def delete_book_in_db(book_id) -> dict:
     else:
         return {"Error": "Book not found!"}, 404
 
-def search_books_in_db(key:str, value) -> dict:
-    return mongo.db.books.find({key: value})
+def search_books_in_db(query:dict) -> dict:
+    return mongo.db.books.find(dict)
+
+def find_author_in_db(author:str) -> dict:
+    return mongo.db.books.find({"author":author})
 
 # this will add book in the database
 @app.route('/books/add', methods=['POST'])
@@ -80,13 +83,17 @@ def search_books():
     if isbn:
         query.update({"isbn": isbn})
 
-    return jsonify(mongo.db.books.find(query))
+    return jsonify(search_books_in_db(query))
 
+@app.routr('/books/author',methods=['GET'])
+def find_author():
+    author:str = request.args.get('author')
+    return jsonify(find_author_in_db(author))
 
 @app.route('/books/view', methods=['GET'])
 def find_book():
-    book_id:int = request.args.get('id')
-    return jsonify(find_book_in_db(book_id))
+    id:int = request.args.get('id')
+    return jsonify(find_book_in_db(id))
 
 @app.route('/books/delete', methods=['DELETE'])
 def remove_book():
