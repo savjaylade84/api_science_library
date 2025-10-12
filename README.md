@@ -46,8 +46,7 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-| `GET` | `/books/search` | Search books | `?q=search_term` | `[{matching_books}]` | ✅ Done |
-| `GET` | `/books/filter` | Filter books | `?author=name&subject=physics` | `[{filtered_books}]` | ✅ Done |
+| `GET` | `/books/search` | Search books | `?author=name&subject=physics` | `[{matching_books}]` | ✅ Done |
 | `GET` | `/books/author` | Get books by author | `?author=name` | `[{author_books}]` | ✅ Done |
 | `GET` | `/books/subject` | Get books by subject | `?subject=name` | `[{subject_books}]` | ✅ Done |
 
