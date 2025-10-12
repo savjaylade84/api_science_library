@@ -16,6 +16,7 @@ class BookSchema(Schema):
     year = fields.Int(required=True)
     isbn = fields.Str(required=True)
 
+
 def find_all_books_in_db() -> dict:
     return mongo.db.books.find()
 
@@ -33,7 +34,7 @@ def search_books_in_db(query:dict) -> dict:
     return mongo.db.books.find(dict)
 
 def find_author_in_db(author:str) -> dict:
-    return mongo.db.books.find({"author":author})
+    return mongo.db.books.find_one({"author":author})
 
 # this will add book in the database
 @app.route('/books/add', methods=['POST'])
@@ -60,12 +61,12 @@ def find_books():
 def search_books():
 
     # get the query parameters
-    id:int = request.args.get('id')
-    title:str = request.args.get('title')
-    author:str = request.args.get('author')
-    subject:str = request.args.get('subject')
-    publisher:str = request.args.get('publisher')
-    isbn:str = request.args.get('isbn')
+    id:int = request.args.get('id',type=int)
+    title:str = request.args.get('title',type=str)
+    author:str = request.args.get('author',type=str)
+    subject:str = request.args.get('subject',type=str)
+    publisher:str = request.args.get('publisher',type=str)
+    isbn:str = request.args.get('isbn',type=str)
 
     query:dict = {}
 
@@ -85,19 +86,19 @@ def search_books():
 
     return jsonify(search_books_in_db(query))
 
-@app.routr('/books/author',methods=['GET'])
+@app.route('/books/author',methods=['GET'])
 def find_author():
-    author:str = request.args.get('author')
+    author: str = request.args.get('author',type=str)
     return jsonify(find_author_in_db(author))
 
 @app.route('/books/view', methods=['GET'])
 def find_book():
-    id:int = request.args.get('id')
+    id: int = request.args.get('id', type=int)
     return jsonify(find_book_in_db(id))
 
 @app.route('/books/delete', methods=['DELETE'])
 def remove_book():
-    id:int = request.args.get('id')
+    id: int = request.args.get('id', type=int)
     return jsonify(delete_book_in_db(id))
 
 if __name__ == '__main__':
