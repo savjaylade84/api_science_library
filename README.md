@@ -67,13 +67,15 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 bash curl -X POST http://127.0.0.1:5000/books/add \
   -H "Content-Type: application/json" \
   -d '{
-    "id":"22"
-    "title": "A Brief History of Time",
-    "author": "Stephen Hawking",
-    "year": 1988,
-    "subject": "Physics",
-    "isbn": "9780553380163",
-  }
+          "id": 1,
+          "title": "A Brief History of Time",
+          "author": "Stephen Hawking",
+          "year": 1988,
+          "isbn": "9780553380163",
+          "subject": "Physics",
+          "copies_available": 5,
+          "publisher": "Bantam Books"
+  }'
 ```
 
 ### 📊 Database Schema
