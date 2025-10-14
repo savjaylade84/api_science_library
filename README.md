@@ -61,8 +61,6 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 |--------|-----------|-------------|------------|----------|----------|
 | `GET` | `books/stats/books-count` | Get total books count | None | `{"total_books": 150}` | 🚧 In Progress |
 | `GET` | `books/stats/books-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | 🚧 In Progress |
-| `GET` | `books/stats/authors-count` | Get unique authors count | None | `{"total_authors": 45}` | 🚧 In Progress |
-| `GET` | `books/stats/publication-years` | Get books by publication year | None | `{"2020": 10, "2021": 15}` | 🚧 In Progress |
 
 ## 📋 Example Requests
 
