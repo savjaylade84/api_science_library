@@ -1,10 +1,18 @@
 #!/bin/bash
 
-URL="http://127.0.0.1:5000/books/add"
-HEADER="Content-Type: application/json"
+# Script to inject dummy data into the library management system
+# Each curl command sends a POST request to add a book with various attributes
+#---------------------------------------------------------------
+URL="http://127.0.0.1:5000/books/add" # Adjust the URL as needed
+HEADER="Content-Type: application/json" # Adjust the header as needed
 
+# Print a message indicating the start of the process
 echo "📚 Adding science books one by one..."
 
+# Each curl command adds a book with various attributes
+#---------------------------------------------------------------
+
+# Book 1
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 1,
   "title": "A Brief History of Time",
@@ -16,6 +24,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "Bantam Books"
 }'
 
+# Book 2
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 2,
   "title": "The Selfish Gene",
@@ -27,6 +36,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "Oxford University Press"
 }'
 
+# Book 3
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 3,
   "title": "Cosmos",
@@ -38,6 +48,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "Ballantine Books"
 }'
 
+# Book 4
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 4,
   "title": "The Origin of Species",
@@ -49,6 +60,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "Macmillan Collector’s Library"
 }'
 
+# Book 5
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 5,
   "title": "The Elegant Universe",
@@ -60,6 +72,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "W. W. Norton & Company"
 }'
 
+# Book 6
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 6,
   "title": "Pale Blue Dot",
@@ -71,6 +84,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "Ballantine Books"
 }'
 
+# Book 7
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 7,
   "title": "The Double Helix",
@@ -82,6 +96,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "Touchstone"
 }'
 
+# Book 8
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 8,
   "title": "The Structure of Scientific Revolutions",
@@ -93,6 +108,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "University of Chicago Press"
 }'
 
+# Book 9
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 9,
   "title": "Silent Spring",
@@ -104,6 +120,7 @@ curl -X POST $URL -H "$HEADER" -d '{
   "publisher": "Mariner Books"
 }'
 
+# Book 10
 curl -X POST $URL -H "$HEADER" -d '{
   "id": 10,
   "title": "Brief Answers to the Big Questions",
@@ -114,5 +131,6 @@ curl -X POST $URL -H "$HEADER" -d '{
   "copies_available": 5,
   "publisher": "Bantam"
 }'
-
+#---------------------------------------------------------------
+# Print a completion message
 echo "✅ Done adding all 10 books!"
