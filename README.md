@@ -32,32 +32,36 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 
 ## 🛠️ API Endpoints
 
-### 📚 Books Management
+### 📚 Books Manage
 
 | Method | Endpoint | Description | Request Body | Response | Status |
 |--------|-----------|-------------|--------------|----------|----------|
-| `GET` | `/books/view_all` | Get all books | None | `[{book1}, {book2}, ...]` | ✅ Done |
-| `GET` | `/books/view?book_id<id>` | Get book by ID | None | `{book_data}` | ✅ Done |
-| `POST` | `/books/add` | Add new book | `{"title": "Book", "author": "Author", "year": 2023}` | `{"message": "Book added", "id": "123"}` | ✅ Done |
-| `PUT` | `/books/update?book_id=<id>` | Update book | `{"title": "New Title"}` | `{"message": "Book updated"}` | 🚧 In Progress |
-| `DELETE` | `/books/delete?book_id=<id>` | Delete book | None | `{"message": "Book deleted"}` | ✅ Done |
+| `POST` | `/books/manage/add` | Add new book | `{"id": 1,"title": "A Brief History of Time","author": "Stephen Hawking","year": 1988,"isbn": "9780553380163","subject": "Physics","copies_available": 5,"publisher": "Bantam Books"}` | `{"message": "Book added", "id": "123"}` | ✅ Done |
+| `PUT` | `/books/manage/update?id=<id>` | Update book | `{"title": "New Title"}` | `{"message": "Book updated"}` | 🚧 In Progress |
+| `DELETE` | `/books/manage/delete?book_id=<id>` | Delete book | None | `{"message": "Book deleted"}` | ✅ Done |
 
-### 🔍 Search & Filter
+### 🔍 Books Search & Filter
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-| `GET` | `/books/search` | Search books | `?author=name&subject=physics` | `[{matching_books}]` | ✅ Done |
-| `GET` | `/books/author` | Get books by author | `?author=name` | `[{author_books}]` | ✅ Done |
-| `GET` | `/books/subject` | Get books by subject | `?subject=name` | `[{subject_books}]` | ✅ Done |
+| `GET` | `/books/filter/view_all` | Get all books | None | `[{book1}, {book2}, ...]` | ✅ Done |
+| `GET` | `/books/filter/search` | Search books | `?author=name&subject=physics` | `[{matching_books}]` | ✅ Done |
+| `GET` | `/books/filter/id?id=<id>` | Get book by ID | `?id=<id>` | `{book_data}` | ✅ Done |
+| `GET` | `/books/filter/author?author=<author>` | Get books by author | `?author=<author>` | `[{author_books}]` | ✅ Done |
+| `GET` | `/books/filter/subject?subject=<subject>` | Get books by subject | `?subject=<subject>` | `[{subject_books}]` | ✅ Done |
+| `GET` | `/books/filter/isbn?isbn=<subject>` | Get books by isbn | `?isbn=<isbn>` | `[{isbn_books}]` | ✅ Done |
+| `GET` | `/books/filter/publisher?publisher=<publisher>` | Get books by publisher | `?publisher=<publisher>` | `[{publisher_books}]` | ✅ Done |
+| `GET` | `/books/filter/title?title=<titler>` | Get books by title | `?title=<title>` | `[{title_books}]` | ✅ Done |
+| `GET` | `/books/filter/year?year=<year>` | Get books by year | `?year=<year>` | `[{year_books}]` | ✅ Done |
 
-### 📊 Statistics
+### 📊 Books Statistics
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-| `GET` | `/stats/books-count` | Get total books count | None | `{"total_books": 150}` | 🚧 In Progress |
-| `GET` | `/stats/books-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | 🚧 In Progress |
-| `GET` | `/stats/authors-count` | Get unique authors count | None | `{"total_authors": 45}` | 🚧 In Progress |
-| `GET` | `/stats/publication-years` | Get books by publication year | None | `{"2020": 10, "2021": 15}` | 🚧 In Progress |
+| `GET` | `books/stats/books-count` | Get total books count | None | `{"total_books": 150}` | 🚧 In Progress |
+| `GET` | `books/stats/books-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | 🚧 In Progress |
+| `GET` | `books/stats/authors-count` | Get unique authors count | None | `{"total_authors": 45}` | 🚧 In Progress |
+| `GET` | `books/stats/publication-years` | Get books by publication year | None | `{"2020": 10, "2021": 15}` | 🚧 In Progress |
 
 ## 📋 Example Requests
 
