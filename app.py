@@ -55,6 +55,9 @@ def find_title_in_db(title:str) -> dict:
 def find_year_in_db(year:int) -> dict:
     return mongo.db.books.find({"year":year})
 
+def find_copies_in_db(copies:int) -> dict:
+    return mongo.db.books.find({"copies_available":copies})
+
 
 # this will add book in the database
 @app.route('/books/manage/append', methods=['POST'])
@@ -128,41 +131,37 @@ def search():
 
     return jsonify(search_books_in_db(query))
 
-@app.route('/books/filter/author',methods=['GET'])
-def find_author():
-    author: str = request.args.get('author',type=str)
+@app.route('/books/filter/author/<string:author>',methods=['GET'])
+def find_author(author):
     return jsonify(find_author_in_db(author))
 
-@app.route('/books/filter/subject',methods=['GET'])
-def find_subject():
-    subject: str = request.args.get('subject')
+@app.route('/books/filter/subject/<string:subject>',methods=['GET'])
+def find_subject(subject):
     return jsonify(find_subject_in_db(subject))
 
-@app.route('/books/filter/id', methods=['GET'])
-def find_id():
-    id: int = request.args.get('id', type=int)
+@app.route('/books/filter/id/<int:id>', methods=['GET'])
+def find_id(id):
     return jsonify(find_id_in_db(id))
 
-@app.route('/books/filter/isbn', methods=['GET'])
-def find_isbn():
-    isbn: str = request.args.get('isbn', type=str)
+@app.route('/books/filter/isbn/<string:isbn>', methods=['GET'])
+def find_isbn(isbn):
     return jsonify(find_isbn_in_db(isbn))
 
-@app.route('/books/filter/publisher', methods=['GET'])
-def find_publisher():
-    publisher: str = request.args.get('publisher', type=str)
+@app.route('/books/filter/publisher/<string:publisher>', methods=['GET'])
+def find_publisher(publisher):
     return jsonify(find_publisher_in_db(publisher))
 
-@app.route('/books/filter/title', methods=['GET'])
-def find_title():
-    title: str = request.args.get('title', type=str)
+@app.route('/books/filter/title/<string:title>', methods=['GET'])
+def find_title(title):
     return jsonify(find_title_in_db(title))
 
-@app.route('/books/filter/year', methods=['GET'])
-def find_year():
-    year: int = request.args.get('year', type=int)
+@app.route('/books/filter/year/<int:year>', methods=['GET'])
+def find_year(year):
     return jsonify(find_year_in_db(year))
 
+@app.route('/books/filter/copies/<int:copies>', methods=['GET'])
+def find_copies(copies):
+    return jsonify(find_copies_in_db(copies))
 
 if __name__ == '__main__':
     app.run(debug=True)

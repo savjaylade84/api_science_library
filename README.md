@@ -46,13 +46,14 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 |--------|-----------|-------------|------------|----------|----------|
 | `GET` | `/books/filter/view_all` | Get all books | None | `[{book1}, {book2}, ...]` | ✅ Done |
 | `GET` | `/books/filter/search` | Search books | `?author=name&subject=physics` | `[{matching_books}]` | ✅ Done |
-| `GET` | `/books/filter/id?id=<id>` | Get book by ID | `?id=<id>` | `{book_data}` | ✅ Done |
-| `GET` | `/books/filter/author?author=<author>` | Get books by author | `?author=<author>` | `[{author_books}]` | ✅ Done |
-| `GET` | `/books/filter/subject?subject=<subject>` | Get books by subject | `?subject=<subject>` | `[{subject_books}]` | ✅ Done |
-| `GET` | `/books/filter/isbn?isbn=<subject>` | Get books by isbn | `?isbn=<isbn>` | `[{isbn_books}]` | ✅ Done |
-| `GET` | `/books/filter/publisher?publisher=<publisher>` | Get books by publisher | `?publisher=<publisher>` | `[{publisher_books}]` | ✅ Done |
-| `GET` | `/books/filter/title?title=<titler>` | Get books by title | `?title=<title>` | `[{title_books}]` | ✅ Done |
-| `GET` | `/books/filter/year?year=<year>` | Get books by year | `?year=<year>` | `[{year_books}]` | ✅ Done |
+| `GET` | `/books/filter/id/<id>` | Get book by ID | `/<id>` | `{id_book}` | ✅ Done |
+| `GET` | `/books/filter/author/<author>` | Get books by author | `/<author>` | `[{author_books}]` | ✅ Done |
+| `GET` | `/books/filter/subject/<subject>` | Get books by subject | `/<subject>` | `[{subject_books}]` | ✅ Done |
+| `GET` | `/books/filter/isbn/<isbn>` | Get books by isbn | `/<isbn>` | `[{isbn_books}]` | ✅ Done |
+| `GET` | `/books/filter/publisher/<publisher>` | Get books by publisher | `/<publisher>` | `[{publisher_books}]` | ✅ Done |
+| `GET` | `/books/filter/title/<titler>` | Get books by title | `/<title>` | `[{title_books}]` | ✅ Done |
+| `GET` | `/books/filter/year/<year>` | Get books by year | `/<year>` | `[{year_books}]` | ✅ Done |
+| `GET` | `/books/filter/copies/<copies>` | Get books by no. of copies | `/<copies>` | `[{number_copies_books}]` | ✅ Done |
 
 ### 📊 Books Statistics
 
