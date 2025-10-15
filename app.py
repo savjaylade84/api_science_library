@@ -58,6 +58,35 @@ def find_year_in_db(year:int) -> dict:
 def find_copies_in_db(copies:int) -> dict:
     return mongo.db.books.find({"copies_available":copies})
 
+def count_copies_in_db() -> dict:
+    pipeline = [
+        {
+            "$group": {
+                "_id": None,
+                "total_copies": {"$sum": "$copies_available"}
+            }
+        }
+    ]
+    result = list(mongo.db.books.aggregate(pipeline))
+    total_copies = result[0]['total_copies'] if result else 0
+    return {"total_copies": total_copies}
+
+def count_copies_by_subject_in_db() -> dict:
+    pipeline = [
+        {
+            "$group": {
+                "_id": "$subject",
+                "total_copies": {"$sum": "$subject"}
+            }
+        }
+    ]
+    result = list(mongo.db.books.aggregate(pipeline))
+    total = []
+    for item in result:
+        item['total_copies'] += 1
+        total.append({item['_id']:item['total_copies']})
+    return jsonify(total)
+
 
 # this will add book in the database
 @app.route('/books/manage/append', methods=['POST'])
@@ -162,6 +191,14 @@ def find_year(year):
 @app.route('/books/filter/copies/<int:copies>', methods=['GET'])
 def find_copies(copies):
     return jsonify(find_copies_in_db(copies))
+
+@app.route('/books/stats/total-copies',methods=['GET'])
+def count_books():
+    return count_copies_in_db()
+
+@app.route('/books/stats/total-copies-by-subject',methods=['GET'])
+def count_books_by_subject():
+    return count_copies_by_subject_in_db()
 
 if __name__ == '__main__':
     app.run(debug=True)

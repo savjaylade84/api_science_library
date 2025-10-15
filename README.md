@@ -59,8 +59,8 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-| `GET` | `books/stats/books-count` | Get total books count | None | `{"total_books": 150}` | 🚧 In Progress |
-| `GET` | `books/stats/books-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | 🚧 In Progress |
+| `GET` | `books/stats/total-copies` | Get total books count | None | `{"total_books": 150}` | ✅ Done |
+| `GET` | `books/stats/total-copies-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | ✅ Done |
 
 ## 📋 Example Requests
 
