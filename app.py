@@ -1,6 +1,7 @@
 from flask_pymongo import PyMongo
 from flask import Flask, render_template,jsonify,request
 from marshmallow import Schema, fields,ValidationError
+from typing import Any,TypeAlias
 import json
 
 app = Flask(__name__)
@@ -9,6 +10,10 @@ mongo = PyMongo(app)
 
 mongo.db.books.create_index("id",unique=True)
 mongo.db.books.create_index("isbn",unique=True)
+
+# create type for json 
+JSONType: TypeAlias = dict[str,Any] | list[Any] | None
+
 
 # this will make sure the user inputs are validated
 class BookSchema(Schema):
@@ -21,44 +26,44 @@ class BookSchema(Schema):
     copies_available = fields.Int(required=True)
     publisher = fields.Str(required=True)
 
-def delete_book_in_db(id:int) -> dict:
+def delete_book_in_db(id:int) -> JSONType:
     result = mongo.db.books.delete_one({"id": id})
     if result.deleted_count:
         return {"Message": "Book deleted successfully!"}
     else:
         return {"Error": "Book not found!"}, 404
 
-def search_books_in_db(query:dict) -> dict:
+def search_books_in_db(query:dict) -> JSONType:
     return mongo.db.books.find(query,{"id":0})
 
-def find_author_in_db(author:str) -> dict:
+def find_author_in_db(author:str) -> JSONType:
     return mongo.db.books.find({"author":author})
 
-def find_subject_in_db(subject:str) -> dict:
+def find_subject_in_db(subject:str) -> JSONType:
     return mongo.db.books.find({"subject":subject})
 
-def find_all_in_db() -> dict:
+def find_all_in_db() -> JSONType:
     return mongo.db.books.find()
 
-def find_id_in_db(id:int) -> dict:
+def find_id_in_db(id:int) -> JSONType:
     return mongo.db.books.find_one({"id": id})
 
-def find_isbn_in_db(isbn:str) -> dict:
+def find_isbn_in_db(isbn:str) -> JSONType:
     return mongo.db.books.find({"isbn":isbn})
 
-def find_publisher_in_db(publisher:str) -> dict:
+def find_publisher_in_db(publisher:str) -> JSONType:
     return mongo.db.books.find({"publisher":publisher})
 
-def find_title_in_db(title:str) -> dict:
+def find_title_in_db(title:str) -> JSONType:
     return mongo.db.books.find({"title":title})
 
-def find_year_in_db(year:int) -> dict:
+def find_year_in_db(year:int) -> JSONType:
     return mongo.db.books.find({"year":year})
 
-def find_copies_in_db(copies:int) -> dict:
+def find_copies_in_db(copies:int) -> JSONType:
     return mongo.db.books.find({"copies_available":copies})
 
-def count_copies_in_db() -> dict:
+def count_copies_in_db() -> JSONType:
     pipeline = [
         {
             "$group": {
@@ -71,7 +76,7 @@ def count_copies_in_db() -> dict:
     total_copies = result[0]['total_copies'] if result else 0
     return {"total_copies": total_copies}
 
-def count_copies_by_subject_in_db() -> dict:
+def count_copies_by_subject_in_db() -> JSONType:
     pipeline = [
         {
             "$group": {
@@ -87,10 +92,12 @@ def count_copies_by_subject_in_db() -> dict:
         total.append({item['_id']:item['total_copies']})
     return jsonify(total)
 
+def register(user: dict) -> JSONType:
+    return jsonify({"username":user['username'],"password":user['password']})
 
 # this will add book in the database
 @app.route('/books/manage/append', methods=['POST'])
-def append():
+def append() -> JSONType:
     book = request.get_json()
     if not book:
         return jsonify({"Error": "No data provided!"}), 400
@@ -106,20 +113,20 @@ def append():
 
 
 @app.route('/books/manage/update',methods=['GET'])
-def update():
+def update() -> JSONType:
     pass
 
 @app.route('/books/manage/delete', methods=['DELETE'])
-def delete():
+def delete() -> JSONType:
     id: int = request.args.get('id', type=int)
     return jsonify(delete_book_in_db(id))
 
 @app.route('/books/filter/view_all', methods=['GET'])
-def view_all():
+def view_all() -> JSONType:
     return jsonify(find_all_in_db())
 
 @app.route('/books/filter/search', methods=['GET'])
-def search():
+def search() -> JSONType:
 
     # get the query parameters
     id:int = request.args.get('id',type=int)
@@ -161,44 +168,56 @@ def search():
     return jsonify(search_books_in_db(query))
 
 @app.route('/books/filter/author/<string:author>',methods=['GET'])
-def find_author(author):
+def find_author(author) -> JSONType:
     return jsonify(find_author_in_db(author))
 
 @app.route('/books/filter/subject/<string:subject>',methods=['GET'])
-def find_subject(subject):
+def find_subject(subject) -> JSONType:
     return jsonify(find_subject_in_db(subject))
 
 @app.route('/books/filter/id/<int:id>', methods=['GET'])
-def find_id(id):
+def find_id(id) -> JSONType:
     return jsonify(find_id_in_db(id))
 
 @app.route('/books/filter/isbn/<string:isbn>', methods=['GET'])
-def find_isbn(isbn):
+def find_isbn(isbn) -> JSONType:
     return jsonify(find_isbn_in_db(isbn))
 
 @app.route('/books/filter/publisher/<string:publisher>', methods=['GET'])
-def find_publisher(publisher):
+def find_publisher(publisher) -> JSONType:
     return jsonify(find_publisher_in_db(publisher))
 
 @app.route('/books/filter/title/<string:title>', methods=['GET'])
-def find_title(title):
+def find_title(title) -> JSONType:
     return jsonify(find_title_in_db(title))
 
 @app.route('/books/filter/year/<int:year>', methods=['GET'])
-def find_year(year):
+def find_year(year) -> JSONType:
     return jsonify(find_year_in_db(year))
 
 @app.route('/books/filter/copies/<int:copies>', methods=['GET'])
-def find_copies(copies):
+def find_copies(copies) -> JSONType:
     return jsonify(find_copies_in_db(copies))
 
 @app.route('/books/stats/total-copies',methods=['GET'])
-def count_books():
+def count_books() -> JSONType:
     return count_copies_in_db()
 
 @app.route('/books/stats/total-copies-by-subject',methods=['GET'])
-def count_books_by_subject():
+def count_books_by_subject() -> JSONType:
     return count_copies_by_subject_in_db()
+
+@app.route('/books/user/signup',methods=['GET'])
+def get_user() -> JSONType:
+
+    username: str = request.args.get('username',type=str)
+    password: str = request.args.get('password',type=str)
+
+    if username and password:
+       return register({"username": username,"password":password})
+    
+    return jsonify({'Error': 'Empty Data'})
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
