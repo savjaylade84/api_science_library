@@ -62,6 +62,13 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 | `GET` | `books/stats/total-copies` | Get total books count | None | `{"total_books": 150}` | ✅ Done |
 | `GET` | `books/stats/total-copies-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | ✅ Done |
 
+### 📝 Signup and Signin
+
+| Method | Endpoint | Description | Parameters | Response | Status |
+|--------|-----------|-------------|------------|----------|----------|
+|`GET`| `/books/user/signup` | register a new account | None | `{"status":"successfully register"}` | 🚧 In Progress |
+|`GET`| `/books/user/signin` | signin account | None | `{"status":"successfully signin"}` | 🚧 In Progress |
+
 ## 📋 Example Requests
 
 ### Add a New Book
