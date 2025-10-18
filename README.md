@@ -66,8 +66,8 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-|`GET`| `/books/user/signup` | register a new account | None | `{"status":"successfully register"}` | 🚧 In Progress |
-|`GET`| `/books/user/signin` | signin account | None | `{"status":"successfully signin"}` | 🚧 In Progress |
+|`GET`| `/books/user/signup` | register a new account | `?username=<username>&passsword=<password>` | `{"status":"successfully register"}` | 🚧 In Progress |
+|`GET`| `/books/user/signin` | signin account | `?username=<username>&passsword=<password>` | `{"status":"successfully signin"}` | 🚧 In Progress |
 
 ## 📋 Example Requests
 
