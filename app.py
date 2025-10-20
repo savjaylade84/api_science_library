@@ -95,8 +95,12 @@ def count_copies_by_subject_in_db() -> JSONType:
 def register(user: dict) -> JSONType:
     return jsonify({"username":user['username'],"password":user['password']})
 
+
+def sigin(user: dict) -> JSONType:
+    return jsonify({"username":user['username'],"password":user['password']})
+
 # this will add book in the database
-@app.route('/books/manage/append', methods=['POST'])
+@app.route('/api/v1/books/manage/append', methods=['POST'])
 def append() -> JSONType:
     book = request.get_json()
     if not book:
@@ -112,20 +116,20 @@ def append() -> JSONType:
         return jsonify({"Error": str(e)}), 500
 
 
-@app.route('/books/manage/update',methods=['GET'])
+@app.route('/api/v1/books/manage/update',methods=['GET'])
 def update() -> JSONType:
     pass
 
-@app.route('/books/manage/delete', methods=['DELETE'])
+@app.route('/api/v1/books/manage/delete', methods=['DELETE'])
 def delete() -> JSONType:
     id: int = request.args.get('id', type=int)
     return jsonify(delete_book_in_db(id))
 
-@app.route('/books/filter/view_all', methods=['GET'])
+@app.route('/api/v1/books/filter/view_all', methods=['GET'])
 def view_all() -> JSONType:
     return jsonify(find_all_in_db())
 
-@app.route('/books/filter/search', methods=['GET'])
+@app.route('/api/v1/books/filter/search', methods=['GET'])
 def search() -> JSONType:
 
     # get the query parameters
@@ -167,47 +171,47 @@ def search() -> JSONType:
 
     return jsonify(search_books_in_db(query))
 
-@app.route('/books/filter/author/<string:author>',methods=['GET'])
+@app.route('/api/v1/books/filter/author/<string:author>',methods=['GET'])
 def find_author(author) -> JSONType:
     return jsonify(find_author_in_db(author))
 
-@app.route('/books/filter/subject/<string:subject>',methods=['GET'])
+@app.route('/api/v1/books/filter/subject/<string:subject>',methods=['GET'])
 def find_subject(subject) -> JSONType:
     return jsonify(find_subject_in_db(subject))
 
-@app.route('/books/filter/id/<int:id>', methods=['GET'])
+@app.route('/api/v1/books/filter/id/<int:id>', methods=['GET'])
 def find_id(id) -> JSONType:
     return jsonify(find_id_in_db(id))
 
-@app.route('/books/filter/isbn/<string:isbn>', methods=['GET'])
+@app.route('/api/v1/books/filter/isbn/<string:isbn>', methods=['GET'])
 def find_isbn(isbn) -> JSONType:
     return jsonify(find_isbn_in_db(isbn))
 
-@app.route('/books/filter/publisher/<string:publisher>', methods=['GET'])
+@app.route('/api/v1/books/filter/publisher/<string:publisher>', methods=['GET'])
 def find_publisher(publisher) -> JSONType:
     return jsonify(find_publisher_in_db(publisher))
 
-@app.route('/books/filter/title/<string:title>', methods=['GET'])
+@app.route('/api/v1/books/filter/title/<string:title>', methods=['GET'])
 def find_title(title) -> JSONType:
     return jsonify(find_title_in_db(title))
 
-@app.route('/books/filter/year/<int:year>', methods=['GET'])
+@app.route('/api/v1/books/filter/year/<int:year>', methods=['GET'])
 def find_year(year) -> JSONType:
     return jsonify(find_year_in_db(year))
 
-@app.route('/books/filter/copies/<int:copies>', methods=['GET'])
+@app.route('/api/v1/books/filter/copies/<int:copies>', methods=['GET'])
 def find_copies(copies) -> JSONType:
     return jsonify(find_copies_in_db(copies))
 
-@app.route('/books/stats/total-copies',methods=['GET'])
+@app.route('/api/v1/books/stats/total-copies',methods=['GET'])
 def count_books() -> JSONType:
     return count_copies_in_db()
 
-@app.route('/books/stats/total-copies-by-subject',methods=['GET'])
+@app.route('/api/v1/books/stats/total-copies-by-subject',methods=['GET'])
 def count_books_by_subject() -> JSONType:
     return count_copies_by_subject_in_db()
 
-@app.route('/books/user/signup',methods=['GET'])
+@app.route('/api/v1/books/user/signup',methods=['GET'])
 def get_user() -> JSONType:
 
     username: str = request.args.get('username',type=str)
@@ -215,6 +219,17 @@ def get_user() -> JSONType:
 
     if username and password:
        return register({"username": username,"password":password})
+    
+    return jsonify({'Error': 'Empty Data'})
+
+@app.route('/api/v1/books/user/sigin',methods=['POST'])
+def sigin_user() -> JSONType:
+
+    username: str = request.args.get('username',type=str)
+    password: str = request.args.get('password',type=str)
+
+    if username and password:
+       return sigin({"username":username,"password":password})
     
     return jsonify({'Error': 'Empty Data'})
     

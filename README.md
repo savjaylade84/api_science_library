@@ -36,45 +36,45 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 
 | Method | Endpoint | Description | Request Body | Response | Status |
 |--------|-----------|-------------|--------------|----------|----------|
-| `POST` | `/books/manage/add` | Add new book | `{"id": 1,"title": "A Brief History of Time","author": "Stephen Hawking","year": 1988,"isbn": "9780553380163","subject": "Physics","copies_available": 5,"publisher": "Bantam Books"}` | `{"message": "Book added", "id": "123"}` | ✅ Done |
-| `PUT` | `/books/manage/update?id=<id>` | Update book | `{"title": "New Title"}` | `{"message": "Book updated"}` | 🚧 In Progress |
-| `DELETE` | `/books/manage/delete?book_id=<id>` | Delete book | None | `{"message": "Book deleted"}` | ✅ Done |
+| `POST` | `/api/v1/books/manage/add` | Add new book | `{"id": 1,"title": "A Brief History of Time","author": "Stephen Hawking","year": 1988,"isbn": "9780553380163","subject": "Physics","copies_available": 5,"publisher": "Bantam Books"}` | `{"message": "Book added", "id": "123"}` | ✅ Done |
+| `PUT` | `/api/v1/books/manage/update?id=<id>` | Update book | `{"title": "New Title"}` | `{"message": "Book updated"}` | 🚧 In Progress |
+| `DELETE` | `/api/v1/books/manage/delete?book_id=<id>` | Delete book | None | `{"message": "Book deleted"}` | ✅ Done |
 
 ### 🔍 Books Search & Filter
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-| `GET` | `/books/filter/view_all` | Get all books | None | `[{book1}, {book2}, ...]` | ✅ Done |
-| `GET` | `/books/filter/search` | Search books | `?author=name&subject=physics` | `[{matching_books}]` | ✅ Done |
-| `GET` | `/books/filter/id/<id>` | Get book by ID | `/<id>` | `{id_book}` | ✅ Done |
-| `GET` | `/books/filter/author/<author>` | Get books by author | `/<author>` | `[{author_books}]` | ✅ Done |
-| `GET` | `/books/filter/subject/<subject>` | Get books by subject | `/<subject>` | `[{subject_books}]` | ✅ Done |
-| `GET` | `/books/filter/isbn/<isbn>` | Get books by isbn | `/<isbn>` | `[{isbn_books}]` | ✅ Done |
-| `GET` | `/books/filter/publisher/<publisher>` | Get books by publisher | `/<publisher>` | `[{publisher_books}]` | ✅ Done |
-| `GET` | `/books/filter/title/<titler>` | Get books by title | `/<title>` | `[{title_books}]` | ✅ Done |
-| `GET` | `/books/filter/year/<year>` | Get books by year | `/<year>` | `[{year_books}]` | ✅ Done |
-| `GET` | `/books/filter/copies/<copies>` | Get books by no. of copies | `/<copies>` | `[{number_copies_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/view_all` | Get all books | None | `[{book1}, {book2}, ...]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/search` | Search books | `?author=name&subject=physics` | `[{matching_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/id/<id>` | Get book by ID | `/<id>` | `{id_book}` | ✅ Done |
+| `GET` | `/api/v1/books/filter/author/<author>` | Get books by author | `/<author>` | `[{author_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/subject/<subject>` | Get books by subject | `/<subject>` | `[{subject_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/isbn/<isbn>` | Get books by isbn | `/<isbn>` | `[{isbn_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/publisher/<publisher>` | Get books by publisher | `/<publisher>` | `[{publisher_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/title/<titler>` | Get books by title | `/<title>` | `[{title_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/year/<year>` | Get books by year | `/<year>` | `[{year_books}]` | ✅ Done |
+| `GET` | `/api/v1/books/filter/copies/<copies>` | Get books by no. of copies | `/<copies>` | `[{number_copies_books}]` | ✅ Done |
 
 ### 📊 Books Statistics
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-| `GET` | `books/stats/total-copies` | Get total books count | None | `{"total_books": 150}` | ✅ Done |
-| `GET` | `books/stats/total-copies-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | ✅ Done |
+| `GET` | `/api/v1/books/stats/total-copies` | Get total books count | None | `{"total_books": 150}` | ✅ Done |
+| `GET` | `/api/v1/books/stats/total-copies-by-subject` | Get books count by subject | None | `{"Physics": 50, "Chemistry": 30}` | ✅ Done |
 
 ### 📝 Signup and Signin
 
 | Method | Endpoint | Description | Parameters | Response | Status |
 |--------|-----------|-------------|------------|----------|----------|
-|`GET`| `/books/user/signup` | register a new account | `?username=<username>&passsword=<password>` | `{"status":"successfully register"}` | 🚧 In Progress |
-|`GET`| `/books/user/signin` | signin account | `?username=<username>&passsword=<password>` | `{"status":"successfully signin"}` | 🚧 In Progress |
+|`GET`| `/api/v1/books/user/signup` | register a new account | `?username=<username>&passsword=<password>` | `{"status":"successfully register"}` | 🚧 In Progress |
+|`POST`| `/api/v1/books/user/signin` | signin account | `?username=<username>&passsword=<password>` | `{"status":"successfully signin"}` | 🚧 In Progress |
 
 ## 📋 Example Requests
 
 ### Add a New Book
 
 ```bash
-bash curl -X POST http://127.0.0.1:5000/books/add \
+bash curl -X POST http://127.0.0.1:5000/api/v1/books/add \
   -H "Content-Type: application/json" \
   -d '{
           "id": 1,
