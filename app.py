@@ -2,10 +2,18 @@ from flask_pymongo import PyMongo
 from flask import Flask, render_template,jsonify,request
 from marshmallow import Schema, fields,ValidationError
 from typing import Any,TypeAlias
+from dotenv import load_dotenv
+from werkzeug.security import generate_password_hash, check_password_hash
+import datetime
+import os
+import jwt
 import json
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/science_library"
+app.config['SECRET_KEY'] = os.getenv('SUPER_SECRET_KEY','default_secret_key')
 mongo = PyMongo(app)
 
 mongo.db.books.create_index("id",unique=True)
