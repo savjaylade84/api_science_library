@@ -5,6 +5,7 @@ from typing import Any,TypeAlias
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson import json_util
 from extension import mongo
+import shortuuid
 import datetime
 import jwt
 import json
@@ -25,7 +26,25 @@ class BookSchema(Schema):
     copies_available = fields.Int(required=True)
     publisher = fields.Str(required=True)
 
+def append_book_in_db(book:BookSchema) -> JSONType:
+    
+    if not book:
+        raise ValueError("Empty Value")
+
+    unique_id = shortuuid.ShortUUID(alphabet='1234567890abcdef')._length(25)
+    book["id"] = int(unique_id)
+
+    if mongo.db.books.find_one({"id": book["id"]}):
+        raise ValueError("Book with this ID already exists.")
+
+    mongo.db.books.insert_one(book)
+    return {f'Message": "Book added successfully!, "book_id": {book["id"]}'}
+
 def delete_book_in_db(id:int) -> JSONType:
+
+    if not id:
+        raise ValueError("Empty Value")
+
     result = mongo.db.books.delete_one({"id": id})
     if result.deleted_count:
         return {"Message": "Book deleted successfully!"}

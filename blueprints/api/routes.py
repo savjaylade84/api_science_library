@@ -8,11 +8,9 @@ def append() -> JSONType:
     book = request.get_json()
     if not book:
         return jsonify({"Error": "No data provided!"}), 400
-    
     try:
         validate = BookSchema().load(book)
-        result = mongo.db.books.insert_one(validate)
-        return jsonify({"Message": "Book added successfully!", "book_id": str(result.inserted_id)}), 201
+        return jsonify(append_book_in_db(validate)), 201
     except ValidationError as e:
         return jsonify({"Error": e.messages}), 400
     except Exception as e:
