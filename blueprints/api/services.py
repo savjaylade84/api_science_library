@@ -33,33 +33,70 @@ def delete_book_in_db(id:int) -> JSONType:
         return {"Error": "Book not found!"}, 404
 
 def search_books_in_db(query:dict) -> JSONType:
+
+    if not query:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find(query,{"id":0})
 
 def find_author_in_db(author:str) -> JSONType:
+
+    if not author:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find({"author":author})
 
 def find_subject_in_db(subject:str) -> JSONType:
+
+    if not subject:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find({"subject":subject})
 
 def find_all_in_db() -> JSONType:
+
     return mongo.db.books.find()
 
 def find_id_in_db(id:int) -> JSONType:
+
+    if not id:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find_one({"id": id})
 
 def find_isbn_in_db(isbn:str) -> JSONType:
+
+    if not isbn:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find({"isbn":isbn})
 
 def find_publisher_in_db(publisher:str) -> JSONType:
+
+    if not publisher:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find({"publisher":publisher})
 
 def find_title_in_db(title:str) -> JSONType:
+
+    if not title:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find({"title":title})
 
 def find_year_in_db(year:int) -> JSONType:
+
+    if not year:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find({"year":year})
 
 def find_copies_in_db(copies:int) -> JSONType:
+
+    if not copies:
+        raise ValueError("Empty Value")
+
     return mongo.db.books.find({"copies_available":copies})
 
 def count_copies_in_db() -> JSONType:
@@ -92,8 +129,16 @@ def count_copies_by_subject_in_db() -> JSONType:
     return jsonify(total)
 
 def signup(user: dict) -> JSONType:
+
+    if not user:
+        raise ValueError("Empty Value")
+
     return jsonify({"username":user['username'],"password":user['password']})
 
 
 def sigin(user: dict) -> JSONType:
+
+    if not user:
+        raise ValueError("Empty Value")
+
     return jsonify({"username":user['username'],"password":user['password']})
