@@ -1,6 +1,5 @@
-from flask_pymongo import PyMongo
-from flask import jsonify,Response
-from marshmallow import Schema, fields,ValidationError
+from flask import jsonify
+from marshmallow import Schema, fields
 from typing import Any,TypeAlias
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson import json_util
@@ -17,7 +16,6 @@ JSONType: TypeAlias = dict[str,Any] | list[Any] | None
 
 # this will make sure the user inputs are validated
 class BookSchema(Schema):
-    id = fields.Int(required=True)
     title = fields.Str(required=True)
     author = fields.Str(required=True)
     year = fields.Int(required=True)
@@ -26,19 +24,19 @@ class BookSchema(Schema):
     copies_available = fields.Int(required=True)
     publisher = fields.Str(required=True)
 
-def append_book_in_db(book:BookSchema) -> JSONType:
+def append_book_in_db(book:dict) -> JSONType:
     
     if not book:
         raise ValueError("Empty Value")
 
-    unique_id = shortuuid.ShortUUID(alphabet='1234567890abcdef')._length(25)
-    book["id"] = int(unique_id)
+    if "id" not in book:
+        book = {"id":shortuuid.ShortUUID(alphabet='1234567890abcdef').random(length=10), **book}
 
-    if mongo.db.books.find_one({"id": book["id"]}):
+    if mongo.db.books.find_one({"id": book["id"]}) or mongo.db.books.find_one({"isbn":book["isbn"]}):
         raise ValueError("Book with this ID already exists.")
 
     mongo.db.books.insert_one(book)
-    return {f'Message": "Book added successfully!, "book_id": {book["id"]}'}
+    return {"Message": "Book added successfully!", "book_id": book["id"]}
 
 def delete_book_in_db(id:int) -> JSONType:
 
@@ -56,7 +54,7 @@ def search_books_in_db(query:dict) -> JSONType:
     if not query:
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find(query,{"id":0})
+    return mongo.db.books.find(query)
 
 def find_author_in_db(author:str) -> JSONType:
 

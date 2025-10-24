@@ -1,5 +1,6 @@
 from flask import Flask
 from blueprints.api.routes import library_bp
+from blueprints.website.view import library_wb_bp
 import os
 from dotenv import load_dotenv
 from extension import mongo
@@ -15,6 +16,7 @@ def create_app():
     mongo.db.books.create_index("id",unique=True)
     mongo.db.books.create_index("isbn",unique=True)
     app.register_blueprint(library_bp)
+    app.register_blueprint(library_wb_bp)
     return app
 
 

@@ -77,7 +77,6 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 bash curl -X POST http://127.0.0.1:5000/api/v1/books/add \
   -H "Content-Type: application/json" \
   -d '{
-          "id": 1,
           "title": "A Brief History of Time",
           "author": "Stephen Hawking",
           "year": 1988,

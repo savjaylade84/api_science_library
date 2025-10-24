@@ -3,7 +3,7 @@
 # Script to inject dummy data into the library management system
 # Each curl command sends a POST request to add a book with various attributes
 #---------------------------------------------------------------
-URL="http://127.0.0.1:5000/books/add" # Adjust the URL as needed
+URL="http://127.0.0.1:5000/api/v1/books/manage/append" # Adjust the URL as needed
 HEADER="Content-Type: application/json" # Adjust the header as needed
 
 # Print a message indicating the start of the process
@@ -14,7 +14,6 @@ echo "📚 Adding science books one by one..."
 
 # Book 1
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 1,
   "title": "A Brief History of Time",
   "author": "Stephen Hawking",
   "year": 1988,
@@ -26,7 +25,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 2
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 2,
   "title": "The Selfish Gene",
   "author": "Richard Dawkins",
   "year": 1976,
@@ -38,7 +36,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 3
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 3,
   "title": "Cosmos",
   "author": "Carl Sagan",
   "year": 1980,
@@ -50,7 +47,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 4
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 4,
   "title": "The Origin of Species",
   "author": "Charles Darwin",
   "year": 1859,
@@ -62,7 +58,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 5
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 5,
   "title": "The Elegant Universe",
   "author": "Brian Greene",
   "year": 1999,
@@ -74,7 +69,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 6
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 6,
   "title": "Pale Blue Dot",
   "author": "Carl Sagan",
   "year": 1994,
@@ -86,7 +80,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 7
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 7,
   "title": "The Double Helix",
   "author": "James D. Watson",
   "year": 1968,
@@ -98,7 +91,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 8
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 8,
   "title": "The Structure of Scientific Revolutions",
   "author": "Thomas S. Kuhn",
   "year": 1962,
@@ -110,7 +102,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 9
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 9,
   "title": "Silent Spring",
   "author": "Rachel Carson",
   "year": 1962,
@@ -122,7 +113,6 @@ curl -X POST $URL -H "$HEADER" -d '{
 
 # Book 10
 curl -X POST $URL -H "$HEADER" -d '{
-  "id": 10,
   "title": "Brief Answers to the Big Questions",
   "author": "Stephen Hawking",
   "year": 2018,
