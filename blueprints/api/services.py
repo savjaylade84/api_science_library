@@ -4,9 +4,11 @@ from typing import Any,TypeAlias
 from werkzeug.security import generate_password_hash, check_password_hash
 from bson import json_util
 from extension import mongo
-import shortuuid
+from dotenv import load_dotenv
 import datetime
+import shortuuid
 import jwt
+import os
 import json
 
 
@@ -24,13 +26,23 @@ class BookSchema(Schema):
     copies_available = fields.Int(required=True)
     publisher = fields.Str(required=True)
 
+# this will create a force format for the account 
+class AccountSchema(Schema):
+    username = fields.Str(required=True)
+    password = fields.Str(required=True)
+    fullname = fields.Str(required=True)
+    first_name = fields.Str(required=True)
+    middle_name = fields.Str(required=True)
+    last_name = fields.Str(required=True)
+
+
 def append_book_in_db(book:dict) -> JSONType:
     
     if not book:
         raise ValueError("Empty Value")
 
     if "id" not in book:
-        book = {"id":shortuuid.ShortUUID(alphabet='1234567890abcdef').random(length=10), **book}
+        book:dict = {"id":shortuuid.ShortUUID(alphabet='1234567890abcdef').random(length=10), **book}
 
     if mongo.db.books.find_one({"id": book["id"]}) or mongo.db.books.find_one({"isbn":book["isbn"]}):
         raise ValueError("Book with this ID already exists.")
@@ -145,12 +157,45 @@ def count_copies_by_subject_in_db() -> JSONType:
         total.append({item['_id']:item['total_copies']})
     return jsonify(total)
 
-def signup(user: dict) -> JSONType:
+load_dotenv()
+super_key = os.getenv('SUPER_SECRET_KEY')
+def create_hash_key(payload:dict) -> str:
+    ALGORITHM:str = 'HS256'
+
+    if not payload:
+        raise ValueError('Empty payload, can\'t perform jwt')
+
+    return jwt.encode(payload,super_key,algorithm=ALGORITHM)
+
+def generate_toke(user:dict) -> str:
+    acc_schema: AccountSchema = AccountSchema()
 
     if not user:
         raise ValueError("Empty Value")
 
-    return jsonify({"username":user['username'],"password":user['password']})
+    today: datetime = datetime.datetime.now() + datetime.timedelta(hours=3) 
+
+    payload:dict = {
+        "user_id": user['user_id'],
+        "username": user['username'],
+        "exp": today
+    }
+
+
+    generate_token: str = create_hash_key(payload=payload,)
+
+def register_acc_in_db(user: dict) -> JSONType:
+
+    if not user:
+        raise ValueError("Empty Value")
+    
+    if "user_id" not in user:
+        user:dict = {"user_id":shortuuid.ShortUUID(alphabet='123456780abcdef').random(length=10),**use}
+
+    if mongo.db.user.find_one({"use_id":user['user_id']}) or mongo.db.user.find_one({"username":user['username']}):
+        raise ValueError('User Account Already Existed')
+
+    return jsonify({"Message":"Account is Successfully Registered"})
 
 
 def sigin(user: dict) -> JSONType:

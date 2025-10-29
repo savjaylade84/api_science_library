@@ -114,15 +114,19 @@ def count_books_by_subject() -> JSONType:
     return count_copies_by_subject_in_db()
 
 @library_bp.route('/api/v1/books/user/signup',methods=['GET'])
-def get_user() -> JSONType:
+def signup() -> JSONType:
+    user = request.get_json()
 
-    username: str = request.args.get('username',type=str)
-    password: str = request.args.get('password',type=str)
+    if not user:
+        return jsonify({"Error": "No data provided!"}), 400
 
-    if username and password:
-       return signup({"username": username,"password":password})
-    
-    return jsonify({'Error': 'Empty Data'})
+    try:
+        validate = AccountSchema().load(user)
+        return jsonify(register_acc_in_db(validate))
+    except ValidationError as e:
+        return jsonify({"Error": e.messages}), 400
+    except Exception as e:
+        return jsonify({"Error": str(e)}), 500
 
 @library_bp.route('/api/v1/books/user/sigin',methods=['POST'])
 def sigin_user() -> JSONType:
