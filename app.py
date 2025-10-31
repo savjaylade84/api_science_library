@@ -21,6 +21,7 @@ def create_app():
     mongo.db.books.create_index("isbn",unique=True)
     mongo.db.user.create_index("user_id",unique=True)
     mongo.db.user.create_index("username",unique=True)
+    mongo.db.user.create_index("super_key",unique=True)
 
     # register the blueprint of api and website
     app.register_blueprint(library_bp)

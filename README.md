@@ -69,6 +69,15 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 |`GET`| `/api/v1/books/user/signup` | register a new account | `?username=<username>&passsword=<password>` | `{"status":"successfully register"}` | 🚧 In Progress |
 |`POST`| `/api/v1/books/user/signin` | signin account | `?username=<username>&passsword=<password>` | `{"status":"successfully signin"}` | 🚧 In Progress |
 
+### User Account Progress Table (progress in the table will update,remove, or added)
+
+| Functionality | Description | Progress |
+|--------|-----------|-------------|
+| generate secret key | generate secret key for the token | 🚧 In Progress |
+| generate super key | generate super key for the token | 🚧 In Progress |
+| register new account | create new account | 🚧 In Progress |
+| sigin account | sigin account | 🚧 In Progress |
+
 ## 📋 Example Requests
 
 ## Website for viewing data
@@ -99,7 +108,7 @@ bash curl -X POST http://127.0.0.1:5000/api/v1/books/add \
 {
     "science_library": [
         {
-        "id": 1,
+        "id": "<generated id>",
         "title": "A Brief History of Time",
         "author": "Stephen Hawking",
         "year": 1988,
@@ -108,6 +117,33 @@ bash curl -X POST http://127.0.0.1:5000/api/v1/books/add \
         "copies_available": 5,
         "publisher": "Bantam Books"
         }
+    ]
+}
+```
+
+### User Account
+
+```json
+{
+    "user":[
+      {
+        "id": "<generated id>",
+        "username": "user123",
+        "password": "<encrypted password>",
+        "fullname": "Tom B. Green",
+        "first_name": "Tom",
+        "middle_name": "Barnacle",
+        "last_name": "Green",
+        "tokens": {
+                "super_key":"<generated token>",
+                "secret_keys": {
+                        "name": "key",
+                        "key": "<generated key>",
+                        "exp": "<generated expiration date>"
+                }
+         }
+
+      }
     ]
 }
 ```
