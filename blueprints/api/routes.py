@@ -113,8 +113,8 @@ def count_books() -> JSONType:
 def count_books_by_subject() -> JSONType:
     return count_copies_by_subject_in_db()
 
-@library_bp.route('/api/v1/books/user/signup',methods=['GET'])
-def signup() -> JSONType:
+@library_bp.route('/api/v1/books/user/sign_up',methods=['GET'])
+def sign_up() -> JSONType:
     user = request.get_json()
 
     if not user:
@@ -128,15 +128,15 @@ def signup() -> JSONType:
     except Exception as e:
         return jsonify({"Error": str(e)}), 500
 
-@library_bp.route('/api/v1/books/user/sigin',methods=['POST'])
-def sigin_user() -> JSONType:
+@library_bp.route('/api/v1/books/user/sign_in',methods=['POST'])
+def sign_in() -> JSONType:
 
     username: str = request.args.get('username',type=str)
     password: str = request.args.get('password',type=str)
     token: str = request.args.get('token',type=str)
 
     if username and password and token:
-       return sigin({"username":username,"password":password})
+       return login_user({"username":username,"password":password})
     
     return jsonify({'Error': 'Empty Data'})
 

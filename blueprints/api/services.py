@@ -306,7 +306,7 @@ def register_acc_in_db(user: dict) -> JSONType:
     return jsonify({"Message":"Account is Successfully Registered"})
 
 
-def sigin(user: dict) -> JSONType:
+def login_user(user: dict) -> JSONType:
 
     logger.info("Signing in user")
 

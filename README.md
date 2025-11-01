@@ -78,6 +78,13 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 | register new account | create new account | 🚧 In Progress |
 | sigin account | sigin account | 🚧 In Progress |
 
+### Other Setup in the System
+
+| Functionality | Description | Progress |
+|--------|-----------|-------------|
+| Logging | record the activity of each function for debuggging purposes |  ✅ Done |
+| Unit Testing | Test if the unit is working on what instructed to do | 🚧 In Progress |
+
 ## 📋 Example Requests
 
 ## Website for viewing data
