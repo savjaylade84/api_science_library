@@ -10,6 +10,7 @@ import datetime
 import shortuuid
 import jwt
 
+# load the logging instance
 logger = setup_logger()
 
 # create type for json 
@@ -37,15 +38,17 @@ class AccountSchema(Schema):
     last_name = fields.Str(required=True)
 
 
-
+# key type for the token generation
 class KeyType(Enum):
     SUPER_KEY = 1
     SECRET_KEY = 2
 
+# generate random id
 def generate_random_id(length:int,additional:str = '') -> str:
     logger.info("Generating random ID")
     return shortuuid.ShortUUID(alphabet=f'1234567890abcdef{additional}').random(length=length)
 
+# append book to db
 def append_book_in_db(book:dict) -> JSONType:
 
     logger.info("Appending book to database")
@@ -279,6 +282,7 @@ def generate_token(user:dict,purpose: KeyType) -> str:
         logger.error("Failed to generate hash key or token")
         raise e("Failed to generate hash key or token")
 
+# register account in user collection in science library db
 def register_acc_in_db(user: dict) -> JSONType:
 
     logger.info("Registering account in database")
@@ -305,7 +309,7 @@ def register_acc_in_db(user: dict) -> JSONType:
 
     return jsonify({"Message":"Account is Successfully Registered"})
 
-
+# login user and return username and password
 def login_user(user: dict) -> JSONType:
 
     logger.info("Signing in user")
