@@ -6,15 +6,24 @@ from . import *
 # this will add book in the database
 @library_bp.route('/api/v1/books/manage/append', methods=['POST'])
 def append() -> JSONType:
+    
+    # get the book information from the request body
     book = request.get_json()
+
+    # check if book data exists or send error response
     if not book:
+        logger.error("No book data provided")
         return jsonify({"Error": "No data provided!"}), 400
+    
+    # check for validation errors and append book
     try:
         validate = BookSchema().load(book)
         return jsonify(append_book_in_db(validate)), 201
     except ValidationError as e:
+        logger.error(f"Validation error while appending book: {e.messages}")
         return jsonify({"Error": e.messages}), 400
     except Exception as e:
+        logger.error(f"Unexpected error while appending book: {str(e)}")
         return jsonify({"Error": str(e)}), 500
 
 
@@ -115,17 +124,24 @@ def count_books_by_subject() -> JSONType:
 
 @library_bp.route('/api/v1/books/user/sign_up',methods=['GET'])
 def sign_up() -> JSONType:
+
+    # get the user information from the request body
     user = request.get_json()
 
+    # check if user data exists or send error response
     if not user:
+        logger.error("No user data provided")
         return jsonify({"Error": "No data provided!"}), 400
 
+    # check for validation errors and register user
     try:
         validate = AccountSchema().load(user)
         return jsonify(register_acc_in_db(validate))
     except ValidationError as e:
+        logger.error(f"Validation error during sign up: {e.messages}")
         return jsonify({"Error": e.messages}), 400
     except Exception as e:
+        logger.error(f"Unexpected error during sign up: {str(e)}")
         return jsonify({"Error": str(e)}), 500
 
 @library_bp.route('/api/v1/books/user/sign_in',methods=['POST'])
