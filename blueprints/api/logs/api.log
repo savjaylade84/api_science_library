@@ -1,3 +1,44 @@
 2025-11-01 21:05:27,287 - api - INFO - Finding all books in database
 2025-11-01 21:05:54,410 - api - INFO - Searching books in database
 2025-11-05 20:33:56,427 - api - INFO - Finding all books in database
+2025-11-05 20:41:12,873 - api - INFO - Finding all books in database
+2025-11-08 14:14:35,107 - api - INFO - Finding all books in database
+2025-11-08 14:14:35,146 - api - INFO - Searching books by author in database
+2025-11-08 14:14:35,176 - api - INFO - Searching books by subject in database
+2025-11-08 14:14:35,201 - api - INFO - Searching books by ISBN in database
+2025-11-08 14:18:28,604 - api - INFO - Finding all books in database
+2025-11-08 14:18:28,628 - api - INFO - Searching books by author in database
+2025-11-08 14:18:28,654 - api - INFO - Searching books by subject in database
+2025-11-08 14:18:28,679 - api - INFO - Searching books by ISBN in database
+2025-11-08 14:47:22,634 - api - INFO - Finding all books in database
+2025-11-08 14:47:22,662 - api - INFO - Searching books by author in database
+2025-11-08 14:47:22,689 - api - INFO - Searching books by subject in database
+2025-11-08 14:47:22,715 - api - INFO - Searching books by ISBN in database
+2025-11-08 14:47:29,970 - api - INFO - Finding all books in database
+2025-11-08 14:47:29,996 - api - INFO - Searching books by author in database
+2025-11-08 14:47:30,020 - api - INFO - Searching books by subject in database
+2025-11-08 14:47:30,112 - api - INFO - Searching books by ISBN in database
+2025-11-08 14:50:53,987 - api - INFO - Finding all books in database
+2025-11-08 14:50:54,014 - api - INFO - Searching books by author in database
+2025-11-08 14:50:54,038 - api - INFO - Searching books by subject in database
+2025-11-08 14:50:54,062 - api - INFO - Searching books by ISBN in database
+2025-11-08 14:50:54,086 - api - INFO - Searching books by publisher in database
+2025-11-08 14:50:54,109 - api - INFO - Searching books by title in database
+2025-11-08 14:50:54,142 - api - INFO - Searching books by year in database
+2025-11-08 14:50:54,215 - api - INFO - Searching books by copies available in database
+2025-11-08 14:51:07,077 - api - INFO - Finding all books in database
+2025-11-08 14:51:07,102 - api - INFO - Searching books by author in database
+2025-11-08 14:51:07,126 - api - INFO - Searching books by subject in database
+2025-11-08 14:51:07,152 - api - INFO - Searching books by ISBN in database
+2025-11-08 14:51:07,176 - api - INFO - Searching books by publisher in database
+2025-11-08 14:51:07,200 - api - INFO - Searching books by title in database
+2025-11-08 14:51:07,224 - api - INFO - Searching books by year in database
+2025-11-08 14:51:07,296 - api - INFO - Searching books by copies available in database
+2025-11-08 14:58:54,505 - api - INFO - Finding all books in database
+2025-11-08 14:58:54,530 - api - INFO - Searching books by author in database
+2025-11-08 14:58:54,554 - api - INFO - Searching books by subject in database
+2025-11-08 14:58:54,580 - api - INFO - Searching books by ISBN in database
+2025-11-08 14:58:54,605 - api - INFO - Searching books by publisher in database
+2025-11-08 14:58:54,630 - api - INFO - Searching books by title in database
+2025-11-08 14:58:54,656 - api - INFO - Searching books by year in database
+2025-11-08 14:58:54,681 - api - INFO - Searching books by copies available in database
