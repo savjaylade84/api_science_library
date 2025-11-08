@@ -300,7 +300,6 @@ def generate_token(user:dict,purpose: KeyType) -> str:
         else:
             payload = generate_payload(user=user,purpose=KeyType.SECRET_KEY,isNewUser=True)
 
-
     try:
         if payload:
             logger.info("Generating hash key")

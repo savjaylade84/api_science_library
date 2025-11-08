@@ -684,3 +684,21 @@
 2025-11-08 19:09:05,402 - api - INFO - Generating random ID
 2025-11-08 19:09:05,402 - api - INFO - Generating random ID
 2025-11-08 19:09:05,402 - api - INFO - Generating hash key
+2025-11-08 19:21:35,093 - api - INFO - Finding all books in database
+2025-11-08 19:21:35,114 - api - INFO - Searching books by author in database
+2025-11-08 19:21:35,137 - api - INFO - Searching books by subject in database
+2025-11-08 19:21:35,155 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:21:35,178 - api - INFO - Searching books by publisher in database
+2025-11-08 19:21:35,198 - api - INFO - Searching books by title in database
+2025-11-08 19:21:35,219 - api - INFO - Searching books by year in database
+2025-11-08 19:21:35,239 - api - INFO - Searching books by copies available in database
+2025-11-08 19:21:35,242 - api - INFO - Generating random ID
+2025-11-08 19:21:35,243 - api - INFO - Generating random ID
+2025-11-08 19:21:35,245 - api - INFO - Generating token
+2025-11-08 19:21:35,245 - api - INFO - Finding user in database
+2025-11-08 19:21:35,246 - api - INFO - Generating random ID
+2025-11-08 19:21:35,247 - api - INFO - Generating hash key
+2025-11-08 19:21:35,247 - api - INFO - Generating hash key
+2025-11-08 19:21:35,248 - api - INFO - Generating random ID
+2025-11-08 19:21:35,248 - api - INFO - Generating random ID
+2025-11-08 19:21:35,249 - api - INFO - Generating hash key
