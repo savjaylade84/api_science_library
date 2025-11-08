@@ -1,6 +1,5 @@
 import pytest 
-from  app import create_app
-
+from  ..app import create_app
 
 #this a  script for automated testing the api endspoints using pytest framework
 

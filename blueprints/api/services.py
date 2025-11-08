@@ -2,7 +2,7 @@ from flask import jsonify
 from marshmallow import Schema, fields
 from typing import Any,TypeAlias
 from werkzeug.security import generate_password_hash, check_password_hash
-from extension import mongo
+from ...extension import mongo
 from dotenv import load_dotenv
 from enum import Enum
 from .logs.api_logger import setup_logger
