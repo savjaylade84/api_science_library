@@ -31,6 +31,35 @@ jobs:
         pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+  # --- Start the Flask application in the background ---
+    - name: Start Flask app
+      run: |
+        export FLASK_APP=your_flask_app_file.py
+        # Run the Flask app in the background using 'nohup' and '&'
+        nohup flask run --host=0.0.0.0 --port=5000 &
+      env:
+        MONGODB_URI: mongodb://localhost:27017/testdb
+
+    # --- Wait for the Flask application to become available ---
+    - name: Wait for Flask app to start
+      run: |
+        for i in {1..10}; do
+          if curl -s http://localhost:5000/; then
+            echo "Flask service is up!"
+            break
+          fi
+          echo "Waiting for Flask service to start..."
+          sleep 2
+        done
+
+    # --- Run your bash script that has curl commands ---
+    - name: Inject dummy data via API endpoints
+      # Assumes your script is located at ./scripts/seed.sh
+      run: |
+        chmod +x inject_dummydata.sh # Make the script executable if needed
+        ./inject_dummydata.sh
+      # Ensure your script uses the correct URL, e.g., http://localhost:5000/api/data
+
     - name: Run tests
       run: |
         pytest tests/ -v

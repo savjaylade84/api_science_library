@@ -3,7 +3,7 @@
 # Script to inject dummy data into the library management system
 # Each curl command sends a POST request to add a book with various attributes
 #---------------------------------------------------------------
-URL="http://127.0.0.1:5000/api/v1/books/manage/append" # Adjust the URL as needed
+URL="http://localhost:5000/api/v1/books/manage/append" # Adjust the URL as needed
 HEADER="Content-Type: application/json" # Adjust the header as needed
 
 # Print a message indicating the start of the process
