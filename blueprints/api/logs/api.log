@@ -396,3 +396,273 @@
 2025-11-08 18:33:46,222 - api - INFO - Generating random ID
 2025-11-08 18:33:46,223 - api - INFO - Generating random ID
 2025-11-08 18:33:46,223 - api - INFO - Generating hash key
+2025-11-08 18:47:01,346 - api - INFO - Finding all books in database
+2025-11-08 18:47:01,379 - api - INFO - Searching books by author in database
+2025-11-08 18:47:01,408 - api - INFO - Searching books by subject in database
+2025-11-08 18:47:01,436 - api - INFO - Searching books by ISBN in database
+2025-11-08 18:47:01,465 - api - INFO - Searching books by publisher in database
+2025-11-08 18:47:01,489 - api - INFO - Searching books by title in database
+2025-11-08 18:47:01,517 - api - INFO - Searching books by year in database
+2025-11-08 18:47:01,545 - api - INFO - Searching books by copies available in database
+2025-11-08 18:47:01,548 - api - INFO - Generating random ID
+2025-11-08 18:47:01,549 - api - INFO - Generating random ID
+2025-11-08 18:47:01,552 - api - INFO - Generating token
+2025-11-08 18:47:01,552 - api - INFO - Finding user in database
+2025-11-08 18:47:01,553 - api - INFO - Generating random ID
+2025-11-08 18:47:01,553 - api - INFO - Generating hash key
+2025-11-08 18:47:01,553 - api - INFO - Generating hash key
+2025-11-08 18:47:01,555 - api - INFO - Generating random ID
+2025-11-08 18:47:01,555 - api - INFO - Generating random ID
+2025-11-08 18:47:01,555 - api - INFO - Generating hash key
+2025-11-08 18:49:07,227 - api - INFO - Finding all books in database
+2025-11-08 18:49:07,255 - api - INFO - Searching books by author in database
+2025-11-08 18:49:07,281 - api - INFO - Searching books by subject in database
+2025-11-08 18:49:07,307 - api - INFO - Searching books by ISBN in database
+2025-11-08 18:49:07,336 - api - INFO - Searching books by publisher in database
+2025-11-08 18:49:07,364 - api - INFO - Searching books by title in database
+2025-11-08 18:49:07,388 - api - INFO - Searching books by year in database
+2025-11-08 18:49:07,410 - api - INFO - Searching books by copies available in database
+2025-11-08 18:49:07,413 - api - INFO - Generating random ID
+2025-11-08 18:49:07,415 - api - INFO - Generating random ID
+2025-11-08 18:49:07,417 - api - INFO - Generating token
+2025-11-08 18:49:07,418 - api - INFO - Finding user in database
+2025-11-08 18:49:07,418 - api - INFO - Generating random ID
+2025-11-08 18:49:07,419 - api - INFO - Generating hash key
+2025-11-08 18:49:07,419 - api - INFO - Generating hash key
+2025-11-08 18:49:07,421 - api - INFO - Generating random ID
+2025-11-08 18:49:07,421 - api - INFO - Generating random ID
+2025-11-08 18:49:07,421 - api - INFO - Generating hash key
+2025-11-08 18:50:55,410 - api - INFO - Finding all books in database
+2025-11-08 18:50:55,434 - api - INFO - Searching books by author in database
+2025-11-08 18:50:55,458 - api - INFO - Searching books by subject in database
+2025-11-08 18:50:55,485 - api - INFO - Searching books by ISBN in database
+2025-11-08 18:50:55,515 - api - INFO - Searching books by publisher in database
+2025-11-08 18:50:55,543 - api - INFO - Searching books by title in database
+2025-11-08 18:50:55,574 - api - INFO - Searching books by year in database
+2025-11-08 18:50:55,603 - api - INFO - Searching books by copies available in database
+2025-11-08 18:50:55,606 - api - INFO - Generating random ID
+2025-11-08 18:50:55,608 - api - INFO - Generating random ID
+2025-11-08 18:50:55,609 - api - INFO - Generating token
+2025-11-08 18:50:55,609 - api - INFO - Finding user in database
+2025-11-08 18:50:55,610 - api - INFO - Generating random ID
+2025-11-08 18:50:55,611 - api - INFO - Generating hash key
+2025-11-08 18:50:55,611 - api - INFO - Generating hash key
+2025-11-08 18:50:55,613 - api - INFO - Generating random ID
+2025-11-08 18:50:55,613 - api - INFO - Generating random ID
+2025-11-08 18:50:55,614 - api - INFO - Generating hash key
+2025-11-08 18:54:13,913 - api - INFO - Finding all books in database
+2025-11-08 18:54:13,982 - api - INFO - Searching books by author in database
+2025-11-08 18:54:14,019 - api - INFO - Searching books by subject in database
+2025-11-08 18:54:14,057 - api - INFO - Searching books by ISBN in database
+2025-11-08 18:54:14,083 - api - INFO - Searching books by publisher in database
+2025-11-08 18:54:14,114 - api - INFO - Searching books by title in database
+2025-11-08 18:54:14,137 - api - INFO - Searching books by year in database
+2025-11-08 18:54:14,169 - api - INFO - Searching books by copies available in database
+2025-11-08 18:54:14,184 - api - INFO - Generating random ID
+2025-11-08 18:54:14,185 - api - INFO - Generating random ID
+2025-11-08 18:54:14,187 - api - INFO - Generating token
+2025-11-08 18:54:14,187 - api - INFO - Finding user in database
+2025-11-08 18:54:14,189 - api - INFO - Generating random ID
+2025-11-08 18:54:14,189 - api - INFO - Generating hash key
+2025-11-08 18:54:14,189 - api - INFO - Generating hash key
+2025-11-08 18:54:14,191 - api - INFO - Generating random ID
+2025-11-08 18:54:14,191 - api - INFO - Generating random ID
+2025-11-08 18:54:14,191 - api - INFO - Generating hash key
+2025-11-08 18:55:30,703 - api - INFO - Finding all books in database
+2025-11-08 18:55:30,795 - api - INFO - Searching books by author in database
+2025-11-08 18:55:30,841 - api - INFO - Searching books by subject in database
+2025-11-08 18:55:30,882 - api - INFO - Searching books by ISBN in database
+2025-11-08 18:55:30,910 - api - INFO - Searching books by publisher in database
+2025-11-08 18:55:30,950 - api - INFO - Searching books by title in database
+2025-11-08 18:55:30,990 - api - INFO - Searching books by year in database
+2025-11-08 18:55:31,028 - api - INFO - Searching books by copies available in database
+2025-11-08 18:55:31,047 - api - INFO - Generating random ID
+2025-11-08 18:55:31,049 - api - INFO - Generating random ID
+2025-11-08 18:55:31,052 - api - INFO - Generating token
+2025-11-08 18:55:31,052 - api - INFO - Finding user in database
+2025-11-08 18:55:31,053 - api - INFO - Generating random ID
+2025-11-08 18:55:31,053 - api - INFO - Generating hash key
+2025-11-08 18:55:31,053 - api - INFO - Generating hash key
+2025-11-08 18:55:31,055 - api - INFO - Generating random ID
+2025-11-08 18:55:31,055 - api - INFO - Generating random ID
+2025-11-08 18:55:31,056 - api - INFO - Generating hash key
+2025-11-08 18:56:32,382 - api - INFO - Finding all books in database
+2025-11-08 18:56:32,476 - api - INFO - Searching books by author in database
+2025-11-08 18:56:32,522 - api - INFO - Searching books by subject in database
+2025-11-08 18:56:32,553 - api - INFO - Searching books by ISBN in database
+2025-11-08 18:56:32,578 - api - INFO - Searching books by publisher in database
+2025-11-08 18:56:32,619 - api - INFO - Searching books by title in database
+2025-11-08 18:56:32,643 - api - INFO - Searching books by year in database
+2025-11-08 18:56:32,689 - api - INFO - Searching books by copies available in database
+2025-11-08 18:56:32,702 - api - INFO - Generating random ID
+2025-11-08 18:56:32,704 - api - INFO - Generating random ID
+2025-11-08 18:56:32,705 - api - INFO - Generating token
+2025-11-08 18:56:32,705 - api - INFO - Finding user in database
+2025-11-08 18:56:32,706 - api - INFO - Generating random ID
+2025-11-08 18:56:32,706 - api - INFO - Generating hash key
+2025-11-08 18:56:32,706 - api - INFO - Generating hash key
+2025-11-08 18:56:32,708 - api - INFO - Generating random ID
+2025-11-08 18:56:32,708 - api - INFO - Generating random ID
+2025-11-08 18:56:32,708 - api - INFO - Generating hash key
+2025-11-08 18:59:30,057 - api - INFO - Finding all books in database
+2025-11-08 18:59:30,134 - api - INFO - Searching books by author in database
+2025-11-08 18:59:30,173 - api - INFO - Searching books by subject in database
+2025-11-08 18:59:30,207 - api - INFO - Searching books by ISBN in database
+2025-11-08 18:59:30,229 - api - INFO - Searching books by publisher in database
+2025-11-08 18:59:30,263 - api - INFO - Searching books by title in database
+2025-11-08 18:59:30,290 - api - INFO - Searching books by year in database
+2025-11-08 18:59:30,331 - api - INFO - Searching books by copies available in database
+2025-11-08 18:59:30,347 - api - INFO - Generating random ID
+2025-11-08 18:59:30,348 - api - INFO - Generating random ID
+2025-11-08 18:59:30,350 - api - INFO - Generating token
+2025-11-08 18:59:30,350 - api - INFO - Finding user in database
+2025-11-08 18:59:30,351 - api - INFO - Generating random ID
+2025-11-08 18:59:30,351 - api - INFO - Generating hash key
+2025-11-08 18:59:30,351 - api - INFO - Generating hash key
+2025-11-08 18:59:30,353 - api - INFO - Generating random ID
+2025-11-08 18:59:30,354 - api - INFO - Generating random ID
+2025-11-08 18:59:30,354 - api - INFO - Generating hash key
+2025-11-08 19:00:30,546 - api - INFO - Finding all books in database
+2025-11-08 19:00:30,615 - api - INFO - Searching books by author in database
+2025-11-08 19:00:30,645 - api - INFO - Searching books by subject in database
+2025-11-08 19:00:30,674 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:00:30,704 - api - INFO - Searching books by publisher in database
+2025-11-08 19:00:30,730 - api - INFO - Searching books by title in database
+2025-11-08 19:00:30,759 - api - INFO - Searching books by year in database
+2025-11-08 19:00:30,787 - api - INFO - Searching books by copies available in database
+2025-11-08 19:00:30,799 - api - INFO - Generating random ID
+2025-11-08 19:00:30,809 - api - INFO - Generating random ID
+2025-11-08 19:00:30,816 - api - INFO - Generating token
+2025-11-08 19:00:30,816 - api - INFO - Finding user in database
+2025-11-08 19:00:30,817 - api - INFO - Generating random ID
+2025-11-08 19:00:30,817 - api - INFO - Generating hash key
+2025-11-08 19:00:30,817 - api - INFO - Generating hash key
+2025-11-08 19:00:30,824 - api - INFO - Generating random ID
+2025-11-08 19:00:30,824 - api - INFO - Generating random ID
+2025-11-08 19:00:30,824 - api - INFO - Generating hash key
+2025-11-08 19:01:18,595 - api - INFO - Finding all books in database
+2025-11-08 19:01:18,621 - api - INFO - Searching books by author in database
+2025-11-08 19:01:18,645 - api - INFO - Searching books by subject in database
+2025-11-08 19:01:18,670 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:01:18,692 - api - INFO - Searching books by publisher in database
+2025-11-08 19:01:18,716 - api - INFO - Searching books by title in database
+2025-11-08 19:01:18,739 - api - INFO - Searching books by year in database
+2025-11-08 19:01:18,760 - api - INFO - Searching books by copies available in database
+2025-11-08 19:01:18,815 - api - INFO - Generating random ID
+2025-11-08 19:01:18,817 - api - INFO - Generating random ID
+2025-11-08 19:01:18,818 - api - INFO - Generating token
+2025-11-08 19:01:18,818 - api - INFO - Finding user in database
+2025-11-08 19:01:18,819 - api - INFO - Generating random ID
+2025-11-08 19:01:18,819 - api - INFO - Generating hash key
+2025-11-08 19:01:18,819 - api - INFO - Generating hash key
+2025-11-08 19:01:18,821 - api - INFO - Generating random ID
+2025-11-08 19:01:18,821 - api - INFO - Generating random ID
+2025-11-08 19:01:18,822 - api - INFO - Generating hash key
+2025-11-08 19:02:33,887 - api - INFO - Finding all books in database
+2025-11-08 19:02:33,921 - api - INFO - Searching books by author in database
+2025-11-08 19:02:33,944 - api - INFO - Searching books by subject in database
+2025-11-08 19:02:33,965 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:02:33,996 - api - INFO - Searching books by publisher in database
+2025-11-08 19:02:34,022 - api - INFO - Searching books by title in database
+2025-11-08 19:02:34,049 - api - INFO - Searching books by year in database
+2025-11-08 19:02:34,072 - api - INFO - Searching books by copies available in database
+2025-11-08 19:02:34,075 - api - INFO - Generating random ID
+2025-11-08 19:02:34,076 - api - INFO - Generating random ID
+2025-11-08 19:02:34,078 - api - INFO - Generating token
+2025-11-08 19:02:34,078 - api - INFO - Finding user in database
+2025-11-08 19:02:34,079 - api - INFO - Generating random ID
+2025-11-08 19:02:34,079 - api - INFO - Generating hash key
+2025-11-08 19:02:34,079 - api - INFO - Generating hash key
+2025-11-08 19:02:34,081 - api - INFO - Generating random ID
+2025-11-08 19:02:34,081 - api - INFO - Generating random ID
+2025-11-08 19:02:34,081 - api - INFO - Generating hash key
+2025-11-08 19:04:22,230 - api - INFO - Finding all books in database
+2025-11-08 19:04:22,249 - api - INFO - Searching books by author in database
+2025-11-08 19:04:22,271 - api - INFO - Searching books by subject in database
+2025-11-08 19:04:22,290 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:04:22,311 - api - INFO - Searching books by publisher in database
+2025-11-08 19:04:22,333 - api - INFO - Searching books by title in database
+2025-11-08 19:04:22,357 - api - INFO - Searching books by year in database
+2025-11-08 19:04:22,375 - api - INFO - Searching books by copies available in database
+2025-11-08 19:04:22,378 - api - INFO - Generating random ID
+2025-11-08 19:04:22,379 - api - INFO - Generating random ID
+2025-11-08 19:04:22,380 - api - INFO - Generating token
+2025-11-08 19:04:22,381 - api - INFO - Finding user in database
+2025-11-08 19:04:22,382 - api - INFO - Generating random ID
+2025-11-08 19:04:22,382 - api - INFO - Generating hash key
+2025-11-08 19:04:22,382 - api - INFO - Generating hash key
+2025-11-08 19:04:22,384 - api - INFO - Generating random ID
+2025-11-08 19:04:22,384 - api - INFO - Generating random ID
+2025-11-08 19:04:22,384 - api - INFO - Generating hash key
+2025-11-08 19:05:08,910 - api - INFO - Finding all books in database
+2025-11-08 19:05:08,934 - api - INFO - Searching books by author in database
+2025-11-08 19:05:08,959 - api - INFO - Searching books by subject in database
+2025-11-08 19:05:08,978 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:05:09,002 - api - INFO - Searching books by publisher in database
+2025-11-08 19:05:09,022 - api - INFO - Searching books by title in database
+2025-11-08 19:05:09,044 - api - INFO - Searching books by year in database
+2025-11-08 19:05:09,067 - api - INFO - Searching books by copies available in database
+2025-11-08 19:05:09,069 - api - INFO - Generating random ID
+2025-11-08 19:05:09,071 - api - INFO - Generating random ID
+2025-11-08 19:05:09,073 - api - INFO - Generating token
+2025-11-08 19:05:09,073 - api - INFO - Finding user in database
+2025-11-08 19:05:09,074 - api - INFO - Generating random ID
+2025-11-08 19:05:09,074 - api - INFO - Generating hash key
+2025-11-08 19:05:09,074 - api - INFO - Generating hash key
+2025-11-08 19:05:09,076 - api - INFO - Generating random ID
+2025-11-08 19:05:09,076 - api - INFO - Generating random ID
+2025-11-08 19:05:09,076 - api - INFO - Generating hash key
+2025-11-08 19:07:05,918 - api - INFO - Finding all books in database
+2025-11-08 19:07:05,991 - api - INFO - Searching books by author in database
+2025-11-08 19:07:06,017 - api - INFO - Searching books by subject in database
+2025-11-08 19:07:06,041 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:07:06,072 - api - INFO - Searching books by publisher in database
+2025-11-08 19:07:06,101 - api - INFO - Searching books by title in database
+2025-11-08 19:07:06,134 - api - INFO - Searching books by year in database
+2025-11-08 19:07:06,158 - api - INFO - Searching books by copies available in database
+2025-11-08 19:07:06,160 - api - INFO - Generating random ID
+2025-11-08 19:07:06,162 - api - INFO - Generating random ID
+2025-11-08 19:07:06,163 - api - INFO - Generating token
+2025-11-08 19:07:06,163 - api - INFO - Finding user in database
+2025-11-08 19:07:06,164 - api - INFO - Generating random ID
+2025-11-08 19:07:06,164 - api - INFO - Generating hash key
+2025-11-08 19:07:06,164 - api - INFO - Generating hash key
+2025-11-08 19:07:06,166 - api - INFO - Generating random ID
+2025-11-08 19:07:06,166 - api - INFO - Generating random ID
+2025-11-08 19:07:06,166 - api - INFO - Generating hash key
+2025-11-08 19:07:25,790 - api - INFO - Finding all books in database
+2025-11-08 19:07:25,811 - api - INFO - Searching books by author in database
+2025-11-08 19:07:25,834 - api - INFO - Searching books by subject in database
+2025-11-08 19:07:25,856 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:07:25,879 - api - INFO - Searching books by publisher in database
+2025-11-08 19:07:25,899 - api - INFO - Searching books by title in database
+2025-11-08 19:07:25,924 - api - INFO - Searching books by year in database
+2025-11-08 19:07:25,945 - api - INFO - Searching books by copies available in database
+2025-11-08 19:07:25,948 - api - INFO - Generating random ID
+2025-11-08 19:07:25,950 - api - INFO - Generating random ID
+2025-11-08 19:07:25,952 - api - INFO - Generating token
+2025-11-08 19:07:25,952 - api - INFO - Finding user in database
+2025-11-08 19:07:25,953 - api - INFO - Generating random ID
+2025-11-08 19:07:25,953 - api - INFO - Generating hash key
+2025-11-08 19:07:25,953 - api - INFO - Generating hash key
+2025-11-08 19:07:25,955 - api - INFO - Generating random ID
+2025-11-08 19:07:25,956 - api - INFO - Generating random ID
+2025-11-08 19:07:25,956 - api - INFO - Generating hash key
+2025-11-08 19:08:03,690 - api - INFO - Finding all books in database
+2025-11-08 19:08:03,717 - api - INFO - Searching books by author in database
+2025-11-08 19:08:03,740 - api - INFO - Searching books by subject in database
+2025-11-08 19:08:03,762 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:08:03,783 - api - INFO - Searching books by publisher in database
+2025-11-08 19:08:03,802 - api - INFO - Searching books by title in database
+2025-11-08 19:08:03,825 - api - INFO - Searching books by year in database
+2025-11-08 19:08:03,848 - api - INFO - Searching books by copies available in database
+2025-11-08 19:08:03,850 - api - INFO - Generating random ID
+2025-11-08 19:08:03,852 - api - INFO - Generating random ID
+2025-11-08 19:08:03,853 - api - INFO - Generating token
+2025-11-08 19:08:03,853 - api - INFO - Finding user in database
+2025-11-08 19:08:03,854 - api - INFO - Generating random ID
+2025-11-08 19:08:03,854 - api - INFO - Generating hash key
+2025-11-08 19:08:03,854 - api - INFO - Generating hash key
+2025-11-08 19:08:03,856 - api - INFO - Generating random ID
+2025-11-08 19:08:03,856 - api - INFO - Generating random ID
+2025-11-08 19:08:03,857 - api - INFO - Generating hash key
