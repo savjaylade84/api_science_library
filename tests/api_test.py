@@ -66,16 +66,31 @@ def test_find_copies(client) -> None:
     assert response.status_code == 200
     assert isinstance(response.get_json(), list)
 
-def test_generate_random_id() -> None:
+def test_generate_random_id(capsys) -> None:
     random_id = services.generate_random_id(10)
+    with capsys.disabled():
+        print(f"\n\ngenerate_random_id() -> Generated Mock Random ID: {random_id}")
     assert isinstance(random_id, str)
     assert len(random_id) == 10
 
-def test_generate_payload() -> None:
+def test_generate_payload(capsys) -> None:
     payload = services.generate_payload({"user_id":123,"username":"test"},services.KeyType.SUPER_KEY,True)
+    with capsys.disabled():
+        print(f"\ngenerate_payload() -> Generated Mock Payload: {payload}")
     assert isinstance(payload,dict)
 
-def test_generate_token() -> None:
+def test_generate_token(capsys) -> None:
     token = services.generate_token({"user_id":123,"username":"test"},services.KeyType.SUPER_KEY)
+    with capsys.disabled():
+        print(f"\ngenerate_token() -> Generated Mock Token: {token}")
     assert isinstance(token,str)
+
+def test_generate_hash_key(capsys) -> None:
+    payload = services.generate_payload({"user_id":123,"username":"test"},services.KeyType.SUPER_KEY,True)
+    super_key = services.generate_random_id(25,"#@&%*")
+    hash_key = services.generate_hash_key(payload=payload,super_key=super_key)
+    with capsys.disabled():
+        print(f"\ngenerate_hash_key() -> Generated Mock Hash Key: {hash_key}")
+    assert isinstance(hash_key,str)
+    assert len(hash_key) > 0
 
