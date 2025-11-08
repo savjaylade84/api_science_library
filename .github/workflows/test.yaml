@@ -34,11 +34,11 @@ jobs:
   # --- Start the Flask application in the background ---
     - name: Start Flask app
       run: |
-        export FLASK_APP=your_flask_app_file.py
+        export FLASK_APP=app.py
         # Run the Flask app in the background using 'nohup' and '&'
         nohup flask run --host=0.0.0.0 --port=5000 &
       env:
-        MONGODB_URI: mongodb://localhost:27017/testdb
+        MONGODB_URI: mongodb://localhost:27017/science_library
 
     # --- Wait for the Flask application to become available ---
     - name: Wait for Flask app to start
