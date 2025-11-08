@@ -17,12 +17,26 @@ jobs:
       with:
         python-version: '3.12'
 
+    # --- Start MongoDB as a service ---
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.12.0
+      with:
+        # Use a modern, supported version of MongoDB (e.g., '6.0', '7.0')
+        mongodb-version: '6.0' 
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        # Assumes 'pymongo' or 'flask-pymongo' is in requirements.txt
         pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Run tests
       run: |
         pytest tests/ -v
+      env:
+        # Pass the MongoDB connection string to the tests as an environment variable
+        # Your Flask app/tests should use this variable to connect to the DB
+        MONGODB_URI: mongodb://localhost:27017/science_library
+        FLASK_APP: app.py # e.g., app.py
+        # Add other environment variables your Flask app needs (e.g., SECRET_KEY)
