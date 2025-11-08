@@ -73,3 +73,11 @@
 2025-11-08 15:45:40,157 - api - INFO - Searching books by title in database
 2025-11-08 15:45:40,184 - api - INFO - Searching books by year in database
 2025-11-08 15:45:40,207 - api - INFO - Searching books by copies available in database
+2025-11-08 16:00:50,549 - api - INFO - Finding all books in database
+2025-11-08 16:00:50,573 - api - INFO - Searching books by author in database
+2025-11-08 16:00:50,596 - api - INFO - Searching books by subject in database
+2025-11-08 16:00:50,621 - api - INFO - Searching books by ISBN in database
+2025-11-08 16:00:50,643 - api - INFO - Searching books by publisher in database
+2025-11-08 16:00:50,664 - api - INFO - Searching books by title in database
+2025-11-08 16:00:50,686 - api - INFO - Searching books by year in database
+2025-11-08 16:00:50,709 - api - INFO - Searching books by copies available in database
