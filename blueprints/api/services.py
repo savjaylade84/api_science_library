@@ -234,6 +234,44 @@ def generate_hash_key(payload:dict,super_key:str) -> str:
 
     return jwt.encode(payload,super_key,algorithm=ALGORITHM)
 
+def find_user_in_db(user:dict) -> JSONType:
+
+    logger.info("Finding user in database")
+    if not user:
+        logger.warning("Empty user data provided.")
+        raise ValueError("Empty Value")
+    return mongo.db.user.find_one(user)
+
+def generate_payload(user:dict,purpose: KeyType,isNewUser:bool=False) -> JSONType:
+
+    if not user:
+        logger.warning('Empty user provided')
+        raise ValueError('Empty User Provided')
+    
+    if not purpose:
+        logger.warning('Empty purpose provided')
+        raise ValueError('Empty Purpose')
+    
+    if isNewUser is False:
+        payload:dict = {
+                "user_id": user['user_id'],
+                "username": user['username'],
+                "super_key": user['tokens']['super_key']
+        }
+    else:
+        payload = {
+                "user_id": user['user_id'],
+                "username": user['username'],
+                "super_key": generate_random_id(25,"#@&%*")
+        }
+
+    if purpose is KeyType.SECRET_KEY:
+        today: datetime = datetime.datetime.now() + datetime.timedelta(hours=3) 
+        payload["exp"] =  today
+
+    return payload
+
+
 # generate token based on what type of token
 def generate_token(user:dict,purpose: KeyType) -> str:
 
@@ -251,28 +289,17 @@ def generate_token(user:dict,purpose: KeyType) -> str:
         raise ValueError("Empty purpose")
     
     # check if there's a user with the same information
-    # then act accordingly 
-    if mongo.db.user.find_one(user):
+    # then act accordingly
+    if find_user_in_db(user):
         logger.info("User found in database")
-        acc = mongo.db.user.find_one(payload)
-        payload = {
-            "user_id": acc['user_id'],
-            "username": acc['username'],
-            "super_key": acc['tokens']['super_key']
-        }
+        acc = find_user_in_db(user)
+        payload = generate_payload(user=acc,purpose=KeyType.SUPER_KEY,isNewUser=False)
     else:
-        logger.info("User not found in database, creating new user")
-        payload = {
-                "user_id": user['user_id'],
-                "username": user['username'],
-                "super_key": generate_random_id(25,"#@&%*")
-        }
+        if purpose is KeyType.SUPER_KEY:
+            payload = generate_payload(user=user,purpose=KeyType.SUPER_KEY,isNewUser=True)
+        else:
+            payload = generate_payload(user=user,purpose=KeyType.SECRET_KEY,isNewUser=True)
 
-    #create a expiration key if the token is a secret key
-    if purpose is KeyType.SECRET_KEY:
-        logger.info("Creating expiration key for secret key")
-        today: datetime = datetime.datetime.now() + datetime.timedelta(hours=3) 
-        payload["exp"] =  today
 
     try:
         if payload:

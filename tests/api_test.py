@@ -1,5 +1,7 @@
 import pytest 
 from  ..app import create_app
+from  ..blueprints.api import services
+from typing import get_origin
 
 #this a  script for automated testing the api endspoints using pytest framework
 
@@ -64,6 +66,16 @@ def test_find_copies(client) -> None:
     assert response.status_code == 200
     assert isinstance(response.get_json(), list)
 
+def test_generate_random_id() -> None:
+    random_id = services.generate_random_id(10)
+    assert isinstance(random_id, str)
+    assert len(random_id) == 10
 
+def test_generate_payload() -> None:
+    payload = services.generate_payload({"user_id":123,"username":"test"},services.KeyType.SUPER_KEY,True)
+    assert isinstance(payload,dict)
 
+def test_generate_token() -> None:
+    token = services.generate_token({"user_id":123,"username":"test"},services.KeyType.SUPER_KEY)
+    assert isinstance(token,str)
 
