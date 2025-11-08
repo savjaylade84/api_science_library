@@ -666,3 +666,21 @@
 2025-11-08 19:08:03,856 - api - INFO - Generating random ID
 2025-11-08 19:08:03,856 - api - INFO - Generating random ID
 2025-11-08 19:08:03,857 - api - INFO - Generating hash key
+2025-11-08 19:09:05,218 - api - INFO - Finding all books in database
+2025-11-08 19:09:05,249 - api - INFO - Searching books by author in database
+2025-11-08 19:09:05,270 - api - INFO - Searching books by subject in database
+2025-11-08 19:09:05,291 - api - INFO - Searching books by ISBN in database
+2025-11-08 19:09:05,317 - api - INFO - Searching books by publisher in database
+2025-11-08 19:09:05,341 - api - INFO - Searching books by title in database
+2025-11-08 19:09:05,364 - api - INFO - Searching books by year in database
+2025-11-08 19:09:05,388 - api - INFO - Searching books by copies available in database
+2025-11-08 19:09:05,391 - api - INFO - Generating random ID
+2025-11-08 19:09:05,393 - api - INFO - Generating random ID
+2025-11-08 19:09:05,395 - api - INFO - Generating token
+2025-11-08 19:09:05,395 - api - INFO - Finding user in database
+2025-11-08 19:09:05,399 - api - INFO - Generating random ID
+2025-11-08 19:09:05,400 - api - INFO - Generating hash key
+2025-11-08 19:09:05,400 - api - INFO - Generating hash key
+2025-11-08 19:09:05,402 - api - INFO - Generating random ID
+2025-11-08 19:09:05,402 - api - INFO - Generating random ID
+2025-11-08 19:09:05,402 - api - INFO - Generating hash key
