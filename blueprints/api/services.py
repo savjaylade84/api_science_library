@@ -6,6 +6,7 @@ from ...extension import mongo
 from dotenv import load_dotenv
 from enum import Enum
 from .logs.api_logger import setup_logger
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
 import shortuuid
 import jwt
@@ -334,6 +335,8 @@ def register_acc_in_db(user: dict) -> JSONType:
                                 },**user}
         
     user['password'] = generate_password_hash(user['password'])
+    #access_token = create_access_token(identity=user['username'])
+    #user['access_token'] = access_token
     mongo.db.user.insert_one(user)
     logger.info("Account registered successfully!")
 

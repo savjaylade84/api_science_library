@@ -2,7 +2,7 @@ version: 1.0
 disable_existing_loggers: false
 formatters:
   standard:
-    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format: '%(asctime)s - [ %(levelname)s ] - %(relativepath)s:%(lineno)s - %(funcName)s - %(message)s'
 handlers:
   console:
     class: logging.StreamHandler
@@ -21,4 +21,4 @@ loggers:
     propagate: no
 root:
   level: WARNING
-  handlers: [console]
+  handlers: [console,api.file]

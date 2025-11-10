@@ -3,12 +3,18 @@ from .blueprints.api import routes
 from .blueprints.website import view
 import os
 from dotenv import load_dotenv
-from .extension import mongo
+from .extension import mongo, jwt
+
+
 load_dotenv()
 
 def create_app():
     app = Flask(__name__)
     app = Flask(__name__)
+
+    # configuration for the secret key
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    jwt.init_app(app)
 
     # configuration for the database of mongodb
     app.config["MONGO_URI"] = "mongodb://localhost:27017/science_library"
