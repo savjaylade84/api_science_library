@@ -332,8 +332,34 @@ def register_acc_in_db(user: dict) -> JSONType:
                                    "super_key":generate_token(user=user,purpose=KeyType.SUPER_KEY),
                                    "secret_keys": []                   
                                 },**user}
+        
+    user['password'] = generate_password_hash(user['password'])
+    mongo.db.user.insert_one(user)
+    logger.info("Account registered successfully!")
 
     return jsonify({"Message":"Account is Successfully Registered"})
+
+# find user by username and password
+def find_user_by_username_and_password(username:str,password:str) -> JSONType:
+
+    logger.info("Finding user by username and password")
+
+    if not username or not password:
+        logger.warning("Empty username or password provided.")
+        raise ValueError("Empty Value")
+    
+    user:dict = mongo.db.user.find_one({"username":username})
+
+    if not user:
+        logger.warning("User not found.")
+        raise ValueError("User Not Found")
+
+    if check_password_hash(user['password'],password):
+        logger.info("User found and password matched.")
+        return user
+    else:
+        logger.warning("Password did not match.")
+        raise ValueError("Password did not match")
 
 # login user and return username and password
 def login_user(user: dict) -> JSONType:
@@ -343,5 +369,8 @@ def login_user(user: dict) -> JSONType:
     if not user:
         logger.warning("Empty user data provided.")
         raise ValueError("Empty Value")
+    
+    user = find_user_by_username_and_password(username=user['username'], password=user['password'])
 
     return jsonify({"username":user['username'],"password":user['password']})
+
