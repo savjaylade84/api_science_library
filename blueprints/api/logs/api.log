@@ -1,36 +1,16 @@
-2025-11-10 19:37:20,462 - [ INFO ] - blueprints/api/services.py:122 - find_all_in_db - Finding all books in database
-2025-11-10 19:37:20,487 - [ INFO ] - blueprints/api/services.py:103 - find_author_in_db - Searching books by author in database
-2025-11-10 19:37:20,511 - [ INFO ] - blueprints/api/services.py:113 - find_subject_in_db - Searching books by subject in database
-2025-11-10 19:37:20,535 - [ INFO ] - blueprints/api/services.py:137 - find_isbn_in_db - Searching books by ISBN in database
-2025-11-10 19:37:20,557 - [ INFO ] - blueprints/api/services.py:147 - find_publisher_in_db - Searching books by publisher in database
-2025-11-10 19:37:20,580 - [ INFO ] - blueprints/api/services.py:157 - find_title_in_db - Searching books by title in database
-2025-11-10 19:37:20,599 - [ INFO ] - blueprints/api/services.py:167 - find_year_in_db - Searching books by year in database
-2025-11-10 19:37:20,624 - [ INFO ] - blueprints/api/services.py:177 - find_copies_in_db - Searching books by copies available in database
-2025-11-10 19:37:20,628 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:37:20,630 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:37:20,632 - [ INFO ] - blueprints/api/services.py:279 - generate_token - Generating token
-2025-11-10 19:37:20,632 - [ INFO ] - blueprints/api/services.py:240 - find_user_in_db - Finding user in database
-2025-11-10 19:37:20,633 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:37:20,634 - [ INFO ] - blueprints/api/services.py:306 - generate_token - Generating hash key
-2025-11-10 19:37:20,634 - [ INFO ] - blueprints/api/services.py:224 - generate_hash_key - Generating hash key
-2025-11-10 19:37:20,636 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:37:20,636 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:37:20,636 - [ INFO ] - blueprints/api/services.py:224 - generate_hash_key - Generating hash key
-2025-11-10 19:42:06,453 - [ INFO ] - blueprints/api/services.py:122 - find_all_in_db - Finding all books in database
-2025-11-10 19:42:06,478 - [ INFO ] - blueprints/api/services.py:103 - find_author_in_db - Searching books by author in database
-2025-11-10 19:42:06,504 - [ INFO ] - blueprints/api/services.py:113 - find_subject_in_db - Searching books by subject in database
-2025-11-10 19:42:06,528 - [ INFO ] - blueprints/api/services.py:137 - find_isbn_in_db - Searching books by ISBN in database
-2025-11-10 19:42:06,549 - [ INFO ] - blueprints/api/services.py:147 - find_publisher_in_db - Searching books by publisher in database
-2025-11-10 19:42:06,577 - [ INFO ] - blueprints/api/services.py:157 - find_title_in_db - Searching books by title in database
-2025-11-10 19:42:06,596 - [ INFO ] - blueprints/api/services.py:167 - find_year_in_db - Searching books by year in database
-2025-11-10 19:42:06,617 - [ INFO ] - blueprints/api/services.py:177 - find_copies_in_db - Searching books by copies available in database
-2025-11-10 19:42:06,621 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:42:06,623 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:42:06,625 - [ INFO ] - blueprints/api/services.py:279 - generate_token - Generating token
-2025-11-10 19:42:06,625 - [ INFO ] - blueprints/api/services.py:240 - find_user_in_db - Finding user in database
-2025-11-10 19:42:06,626 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:42:06,626 - [ INFO ] - blueprints/api/services.py:306 - generate_token - Generating hash key
-2025-11-10 19:42:06,626 - [ INFO ] - blueprints/api/services.py:224 - generate_hash_key - Generating hash key
-2025-11-10 19:42:06,628 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:42:06,628 - [ INFO ] - blueprints/api/services.py:49 - generate_random_id - Generating random ID
-2025-11-10 19:42:06,628 - [ INFO ] - blueprints/api/services.py:224 - generate_hash_key - Generating hash key
+2025-11-10 21:52:28,928 - [INFO] - blueprints/api/services.py:80 - Finding all books in database
+2025-11-10 21:52:28,956 - [INFO] - blueprints/api/services.py:61 - Searching books by author in database
+2025-11-10 21:52:28,981 - [INFO] - blueprints/api/services.py:71 - Searching books by subject in database
+2025-11-10 21:52:29,005 - [INFO] - blueprints/api/services.py:95 - Searching books by ISBN in database
+2025-11-10 21:52:29,026 - [INFO] - blueprints/api/services.py:105 - Searching books by publisher in database
+2025-11-10 21:52:29,052 - [INFO] - blueprints/api/services.py:115 - Searching books by title in database
+2025-11-10 21:52:29,073 - [INFO] - blueprints/api/services.py:125 - Searching books by year in database
+2025-11-10 21:52:29,098 - [INFO] - blueprints/api/services.py:135 - Searching books by copies available in database
+2025-11-10 21:53:30,496 - [INFO] - blueprints/api/services.py:80 - Finding all books in database
+2025-11-10 21:53:30,522 - [INFO] - blueprints/api/services.py:61 - Searching books by author in database
+2025-11-10 21:53:30,550 - [INFO] - blueprints/api/services.py:71 - Searching books by subject in database
+2025-11-10 21:53:30,571 - [INFO] - blueprints/api/services.py:95 - Searching books by ISBN in database
+2025-11-10 21:53:30,595 - [INFO] - blueprints/api/services.py:105 - Searching books by publisher in database
+2025-11-10 21:53:30,633 - [INFO] - blueprints/api/services.py:115 - Searching books by title in database
+2025-11-10 21:53:30,672 - [INFO] - blueprints/api/services.py:125 - Searching books by year in database
+2025-11-10 21:53:30,708 - [INFO] - blueprints/api/services.py:135 - Searching books by copies available in database

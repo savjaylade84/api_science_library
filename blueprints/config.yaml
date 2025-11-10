@@ -1,0 +1,58 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  standard:
+    format: '%(asctime)s - [%(levelname)s] - %(relativepath)s:%(lineno)d - %(message)s'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    formatter: standard
+    level: DEBUG
+    stream: 'ext://sys.stdout'
+
+  api_file:
+    class: logging.FileHandler
+    formatter: standard
+    level: DEBUG
+    filename: 'blueprints/api/logs/api.log'
+
+  web_file:
+    class: logging.FileHandler
+    formatter: standard
+    level: DEBUG
+    filename: 'blueprints/website/logs/web.log'
+
+  general_file:
+    class: logging.FileHandler
+    formatter: standard
+    level: DEBUG
+    filename: 'blueprints/logs/general.log'
+
+loggers:
+  api:
+    level: DEBUG
+    handlers:
+      - console
+      - api_file
+    propagate: false
+
+  web:
+    level: DEBUG
+    handlers:
+      - console
+      - web_file
+    propagate: false
+
+  general:
+    level: DEBUG
+    handlers:
+      - console
+      - general_file
+    propagate: false
+
+root:
+  level: WARNING
+  handlers:
+    - console
