@@ -73,8 +73,8 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 
 | Functionality | Description | Progress |
 |--------|-----------|-------------|
-| generate secret key | generate secret key for the token | 🚧 In Progress |
-| generate super key | generate super key for the token | 🚧 In Progress |
+| generate secret key | generate secret key for the token | ✅ Done |
+| generate super key | generate super key for the token | ✅ Done |
 | register new account | create new account | 🚧 In Progress |
 | sigin account | sigin account | 🚧 In Progress |
 
@@ -83,7 +83,8 @@ Built with Python and MongoDB, designed for learning clean, modular API developm
 | Functionality | Description | Progress |
 |--------|-----------|-------------|
 | Logging | record the activity of each function for debuggging purposes |  ✅ Done |
-| Unit Testing | Test if the unit is working on what instructed to do | 🚧 In Progress |
+| Unit Testing | Test if the unit is working on what instructed to do | ✅ Done |
+| Github Action Workflow | Do testing on when pushing project into Github Repository | ✅ Done |
 
 ## 📋 Example Requests
 
