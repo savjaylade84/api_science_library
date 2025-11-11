@@ -1,6 +1,8 @@
 # create type for json 
 from typing import Any, TypeAlias
 from marshmallow import Schema,fields
+from ..extension import mongo
+from enum import Enum
 from werkzeug.security import generate_password_hash, check_password_hash
 from .log import setup_logger,log_type
 import jwt
@@ -27,6 +29,11 @@ class AccountSchema(Schema):
     first_name = fields.Str(required=True)
     middle_name = fields.Str(required=True)
     last_name = fields.Str(required=True)
+
+# key type for the token generation
+class KeyType(Enum):
+    SUPER_KEY = 1
+    SECRET_KEY = 2
 
 JSONType: TypeAlias = dict[str,Any] | list[Any] | None
 

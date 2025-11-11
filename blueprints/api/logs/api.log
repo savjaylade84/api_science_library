@@ -22,3 +22,11 @@
 2025-11-10 21:56:35,445 - [INFO] - blueprints/api/services.py:115 - Searching books by title in database
 2025-11-10 21:56:35,465 - [INFO] - blueprints/api/services.py:125 - Searching books by year in database
 2025-11-10 21:56:35,497 - [INFO] - blueprints/api/services.py:135 - Searching books by copies available in database
+2025-11-11 19:35:03,250 - [INFO] - blueprints/api/services.py:80 - Finding all books in database
+2025-11-11 19:35:03,279 - [INFO] - blueprints/api/services.py:61 - Searching books by author in database
+2025-11-11 19:35:03,324 - [INFO] - blueprints/api/services.py:71 - Searching books by subject in database
+2025-11-11 19:35:03,352 - [INFO] - blueprints/api/services.py:95 - Searching books by ISBN in database
+2025-11-11 19:35:03,382 - [INFO] - blueprints/api/services.py:105 - Searching books by publisher in database
+2025-11-11 19:35:03,405 - [INFO] - blueprints/api/services.py:115 - Searching books by title in database
+2025-11-11 19:35:03,433 - [INFO] - blueprints/api/services.py:125 - Searching books by year in database
+2025-11-11 19:35:03,454 - [INFO] - blueprints/api/services.py:135 - Searching books by copies available in database
