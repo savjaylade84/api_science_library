@@ -5,6 +5,19 @@ from .services import *
 import json
 
 
+@library_wb_bp.route('/api/v1/books/users/validation',methods=['GET'])
+def validate_users() -> JSONType:
+    pass
+
+
+@library_wb_bp.route('/api/v1/books/users/append',methods=['GET'])
+def append_user() -> JSONType:
+    pass
+
+@library_wb_bp.route('/api/v1/books/users/update',methods=['GET'])
+def update_users() -> JSONType:
+    pass
+
 
 @library_wb_bp.route('/api/v1/books/user/sign_up',methods=['GET'])
 def sign_up() -> dict:

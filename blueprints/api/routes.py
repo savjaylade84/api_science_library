@@ -122,5 +122,3 @@ def count_books() -> JSONType:
 def count_books_by_subject() -> JSONType:
     return count_copies_by_subject_in_db()
 
-
-
