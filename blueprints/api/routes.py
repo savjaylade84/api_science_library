@@ -122,3 +122,33 @@ def count_books() -> JSONType:
 def count_books_by_subject() -> JSONType:
     return count_copies_by_subject_in_db()
 
+@library_bp.route('/api/v1/books/users/identify_current_user',methods=['GET'])
+def identify_current_user() -> JSONType:
+    
+    username = request.args.get('username',type=str)
+    password = request.args.get('password',type=str)
+    
+    if username and password:
+        if verify_user_in_db({"username":username,"password":password}):
+            access_token = create_access_token(identity=username)
+            current_user = get_jwt_identity()
+            return jsonify(access_token=access_token,current_user=current_user),200
+        else:
+            return jsonify({'Error': 'Invalid username or password'}), 401
+
+# generate hash key
+def generate_hash_key(payload:dict,super_key:str) -> str:
+
+    logger.info("Generating hash key")
+
+    ALGORITHM:str = 'HS256'
+
+    if not payload:
+        logger.warning("Empty payload provided.")
+        raise ValueError('Empty payload, can\'t perform jwt')
+    
+    if not super_key:
+        logger.warning("Empty super key provided.")
+        raise ValueError('Empty super key, can\'t perform jwt')
+
+    return jwt.encode(payload,super_key,algorithm=ALGORITHM)

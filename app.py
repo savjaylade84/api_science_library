@@ -23,9 +23,9 @@ def create_app():
     # create a unique key for a collections of database science library
     mongo.db.books.create_index("id",unique=True)
     mongo.db.books.create_index("isbn",unique=True)
-    mongo.db.user.create_index("user_id",unique=True)
-    mongo.db.user.create_index("username",unique=True)
-    mongo.db.user.create_index("super_key",unique=True)
+    mongo.db.users.create_index("user_id",unique=True)
+    mongo.db.users.create_index("username",unique=True)
+    mongo.db.users.create_index("super_key",unique=True)
 
     # register the blueprint of api and website
     app.register_blueprint(routes.library_bp)

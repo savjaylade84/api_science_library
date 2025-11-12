@@ -18,3 +18,8 @@
 2025-11-11 19:35:03,465 - [INFO] - blueprints/website/services.py:105 - Generating hash key
 2025-11-11 19:35:03,465 - [INFO] - blueprints/website/services.py:21 - Generating hash key
 2025-11-11 19:35:03,468 - [INFO] - blueprints/website/services.py:21 - Generating hash key
+2025-11-12 20:04:53,486 - [INFO] - blueprints/website/services.py:71 - Generating token
+2025-11-12 20:04:53,487 - [INFO] - blueprints/website/services.py:30 - Finding user in database
+2025-11-12 20:04:53,491 - [INFO] - blueprints/website/services.py:98 - Generating hash key
+2025-11-12 20:04:53,491 - [INFO] - blueprints/website/services.py:14 - Generating hash key
+2025-11-12 20:04:53,493 - [INFO] - blueprints/website/services.py:14 - Generating hash key

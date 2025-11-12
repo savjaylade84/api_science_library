@@ -176,6 +176,121 @@ def count_copies_by_subject_in_db() -> JSONType:
         total.append({item['_id']:item['total_copies']})
     return jsonify(total)
 
+# --------------------------------------------------------------
 
+def find_user_in_db(user:dict) -> JSONType:
 
+    logger.info("Finding user in database")
+    if not user:
+        logger.warning("Empty user data provided.")
+        raise ValueError("Empty Value")
+    return mongo.db.user.find_one(user)
 
+def verify_user_in_db(user:dict) -> JSONType:
+    
+    if not user['username'] or not user['password']:
+        logger.warning('Empty Username or Password')
+        raise ValueError('Empty Username or Password')
+    
+    search_result = mongo.db.users.find_one(user)
+    
+    if not search_result:
+        return jsonify({"Message":"Failed to find the specific user","Status":"Failed"}), 404
+    else:
+        return jsonify({"Message":"Successfully find the user","Status":"Success","Data":search_result}), 200
+    
+def register_user_in_db(user:dict) -> JSONType:
+    
+    if not user:
+        logger.warning('Empty User Information')
+        raise ValueError('Empty User Information')
+    
+    search_result = mongo.db.user.find_one(user)
+    
+    if not search_result:
+        mongo.db.user.insert_one(user)
+    else: 
+        logger.warning('Already Existed User')
+        return jsonify({"Message":"There's already Existed User","Status":"Failed"}),409
+ 
+# generate hash key
+def generate_hash_key(payload:dict,super_key:str) -> str:
+
+    logger.info("Generating hash key")
+
+    ALGORITHM:str = 'HS256'
+
+    if not payload:
+        logger.warning("Empty payload provided.")
+        raise ValueError('Empty payload, can\'t perform jwt')
+    
+    if not super_key:
+        logger.warning("Empty super key provided.")
+        raise ValueError('Empty super key, can\'t perform jwt')
+
+    return jwt.encode(payload,super_key,algorithm=ALGORITHM)
+    
+def generate_payload(user:dict,purpose: KeyType,isNewUser:bool=False) -> JSONType:
+
+    if not user:
+        logger.warning('Empty user provided')
+        raise ValueError('Empty User Provided')
+    
+    if not purpose:
+        logger.warning('Empty purpose provided')
+        raise ValueError('Empty Purpose')
+    
+    if isNewUser is False:
+        payload:dict = {
+                "user_id": user['user_id'],
+                "username": user['username'],
+                "super_key": user['tokens']['super_key']
+        }
+    else:
+        payload = {
+                "user_id": user['user_id'],
+                "username": user['username'],
+                "super_key": generate_random_id(25,"#@&%*")
+        }
+
+    if purpose is KeyType.SECRET_KEY:
+        today: datetime = datetime.now() + datetime.timedelta(hours=3) 
+        payload["exp"] =  today
+
+    return payload  
+
+# generate token based on what type of token
+def generate_token(user:dict,purpose: KeyType) -> str:
+
+    logger.info("Generating token") 
+
+    payload:dict = {}
+    acc:dict = {}
+
+    if not user:
+        logger.warning("Empty user provided.")
+        raise ValueError("Empty user")
+    
+    if not purpose:
+        logger.warning("Empty purpose provided.")
+        raise ValueError("Empty purpose")
+    
+    # check if there's a user with the same information
+    # then act accordingly
+    if find_user_in_db(user):
+        logger.info("User found in database")
+        acc = find_user_in_db(user)
+        payload = generate_payload(user=acc,purpose=KeyType.SUPER_KEY,isNewUser=False)
+    else:
+        if purpose is KeyType.SUPER_KEY:
+            payload = generate_payload(user=user,purpose=KeyType.SUPER_KEY,isNewUser=True)
+        else:
+            payload = generate_payload(user=user,purpose=KeyType.SECRET_KEY,isNewUser=True)
+
+    try:
+        if payload:
+            logger.info("Generating hash key")
+            return generate_hash_key(payload=payload,super_key = payload['super_key'])
+    except Exception as e:
+        logger.error("Failed to generate hash key or token")
+        raise e("Failed to generate hash key or token")
