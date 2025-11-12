@@ -43,42 +43,15 @@ def view_all() -> JSONType:
 @library_bp.route('/api/v1/books/filter/search', methods=['GET'])
 def search() -> JSONType:
 
-    # get the query parameters
-    id:int = request.args.get('id',type=int)
-    title:str = request.args.get('title',type=str)
-    author:str = request.args.get('author',type=str)
-    year:int = request.args.get('year',type=int)
-    isbn:str = request.args.get('isbn',type=str)
-    subject:str = request.args.get('subject',type=str)
-    copies:int = request.args.get('copies',type=int)
-    publisher:str = request.args.get('publisher',type=str)
-
     query:dict = {}
-
-    #check which parameters are provided and build the query accordingly
-    if id:
-        query['id'] = int(id)
-    
-    if title:
-        query['title'] = title
-
-    if author:
-        query['author'] = author
-
-    if year:
-        query['year'] = int(year)
-
-    if isbn:
-        query['isbn'] = isbn
-
-    if subject:
-        query['subject'] = subject
-
-    if copies:
-        query['copies_available'] = int(copies)
-
-    if publisher:
-        query['publisher'] = publisher
+    query = add_filter(query,request.args.get('id',type=int),'id',int)
+    query = add_filter(query,request.args.get('title',type=str),'title',str)
+    query = add_filter(query,request.args.get('author',type=str),'author',str)
+    query = add_filter(query,request.args.get('year',type=int),'year',int)
+    query = add_filter(query,request.args.get('isbn',type=str),'isbn',str)
+    query = add_filter(query,request.args.get('subject',type=str),'subject',str)
+    query = add_filter(query,request.args.get('copies',type=int),'copies',int)
+    query = add_filter(query,request.args.get('publisher',type=str),'publisher',str)
 
     return jsonify(search_books_in_db(query))
 
@@ -129,26 +102,10 @@ def identify_current_user() -> JSONType:
     password = request.args.get('password',type=str)
     
     if username and password:
-        if verify_user_in_db({"username":username,"password":password}):
-            access_token = create_access_token(identity=username)
+        result = verify_user_in_db({"username":username,"password":password})
+        if result and Status.Success in result['Status']:
+            access_token = create_access_token(identity=username,expires_delta=timedelta(hours=1))
             current_user = get_jwt_identity()
             return jsonify(access_token=access_token,current_user=current_user),200
         else:
             return jsonify({'Error': 'Invalid username or password'}), 401
-
-# generate hash key
-def generate_hash_key(payload:dict,super_key:str) -> str:
-
-    logger.info("Generating hash key")
-
-    ALGORITHM:str = 'HS256'
-
-    if not payload:
-        logger.warning("Empty payload provided.")
-        raise ValueError('Empty payload, can\'t perform jwt')
-    
-    if not super_key:
-        logger.warning("Empty super key provided.")
-        raise ValueError('Empty super key, can\'t perform jwt')
-
-    return jwt.encode(payload,super_key,algorithm=ALGORITHM)

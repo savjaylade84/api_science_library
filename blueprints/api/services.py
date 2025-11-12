@@ -195,9 +195,9 @@ def verify_user_in_db(user:dict) -> JSONType:
     search_result = mongo.db.users.find_one(user)
     
     if not search_result:
-        return jsonify({"Message":"Failed to find the specific user","Status":"Failed"}), 404
+        return jsonify({"Message":"Failed to find the specific user","Status":Status.Failed}), 404
     else:
-        return jsonify({"Message":"Successfully find the user","Status":"Success","Data":search_result}), 200
+        return jsonify({"Message":"Successfully find the user","Status":Status.Success,"Data":search_result}), 200
     
 def register_user_in_db(user:dict) -> JSONType:
     
@@ -211,8 +211,10 @@ def register_user_in_db(user:dict) -> JSONType:
         mongo.db.user.insert_one(user)
     else: 
         logger.warning('Already Existed User')
-        return jsonify({"Message":"There's already Existed User","Status":"Failed"}),409
- 
+        return jsonify({"Message":"There's already Existed User","Status":Status.Failed}),409
+    
+#------------------------------------------------------------------------------------------
+
 # generate hash key
 def generate_hash_key(payload:dict,super_key:str) -> str:
 

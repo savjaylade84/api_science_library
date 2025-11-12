@@ -2,7 +2,7 @@
 from typing import Any, TypeAlias
 from marshmallow import Schema,fields
 from flask import jsonify
-from datetime import datetime
+from datetime import datetime,timedelta
 from ..extension import mongo
 from enum import Enum
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -38,7 +38,18 @@ class KeyType(Enum):
     SUPER_KEY = 1
     SECRET_KEY = 2
 
+class Status (Enum):
+    Success:str = "Success"
+    Failed:str = "Failed"
+    Pending:str = "Pending"
+
 JSONType: TypeAlias = dict[str,Any] | list[Any] | None
+UserDataType: TypeAlias = int | str | dict[str,Any] | list[Any]
+
+def add_filter(_dict:dict,value:UserDataType,key:str,transform:Any = None) -> UserDataType:
+    if value:
+        _dict[key] = transform(value) if transform else value
+    return _dict
 
 def generate_random_id(length:int,additional:str = '') -> str:
     logger.info("Generating random ID")
