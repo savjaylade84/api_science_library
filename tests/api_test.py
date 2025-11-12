@@ -1,6 +1,7 @@
 import pytest 
 from  ..app import create_app
 from  ..blueprints.website import services as services_web
+from  ..blueprints.api import services as services_api
 from ..blueprints import generate_random_id
 
 #this a  script for automated testing the api endspoints using pytest framework
@@ -90,19 +91,19 @@ def test_generate_random_id(capsys) -> None:
     assert len(random_id) == 10
 
 def test_generate_payload(capsys) -> None:
-    payload = services_web.generate_payload({"user_id":123,"username":"test"},services_web.KeyType.SUPER_KEY,True)
+    payload = services_api.generate_payload({"user_id":123,"username":"test"},services_api.KeyType.SUPER_KEY,True)
     print_test_header("test_generate_payload", "services.generate_payload", f"Generated Mock Payload: {payload}", capsys)
     assert isinstance(payload,dict)
 
 def test_generate_token(capsys) -> None:
-    token = services_web.generate_token({"user_id":123,"username":"test"},services_web.KeyType.SUPER_KEY)
+    token = services_api.generate_token({"user_id":123,"username":"test"},services_api.KeyType.SUPER_KEY)
     print_test_header("test_generate_token", "services.generate_token", f"Generated Mock Token: {token}", capsys)
     assert isinstance(token,str)
 
 def test_generate_hash_key(capsys) -> None:
-    payload = services_web.generate_payload({"user_id":123,"username":"test"},services_web.KeyType.SUPER_KEY,True)
+    payload = services_api.generate_payload({"user_id":123,"username":"test"},services_api.KeyType.SUPER_KEY,True)
     super_key = generate_random_id(25,"#@&%*")
-    hash_key = services_web.generate_hash_key(payload=payload,super_key=super_key)
+    hash_key = services_api.generate_hash_key(payload=payload,super_key=super_key)
     print_test_header("test_generate_hash_key", "services.generate_hash_key", f"Generated Mock Hash Key: {hash_key}", capsys)
     assert isinstance(hash_key,str)
     assert len(hash_key) > 0
