@@ -4,7 +4,9 @@ from .services import *
 
 from . import *
 
-# Define BLOCKLIST here for now, assuming it's not defined elsewhere in the provided context.
+# This set will store the unique identifiers (jti) of revoked JWTs.
+# When a user logs out, their token's jti is added here.
+# The JWTManager is configured in the main app to check this blocklist.
 BLOCKLIST = set()
 
 # this will add book in the database
@@ -122,7 +124,10 @@ def identify_current_user() -> JSONType:
     return jsonify({'Error': 'Missing username or password'}), 400
 
 @library_bp.route('/api/v1/books/users/refresh_token', methods=['POST'])
-@jwt_required(refresh=True)
+# In Flask-JWT-Extended v4.0+, `jwt_refresh_token_required()` was deprecated.
+# The new standard is to use `@jwt_required(refresh=True)` to protect
+# an endpoint with a refresh token.
+@jwt_required(refresh=True) 
 def refresh_token() -> JSONType:
     """
     Refresh token endpoint. This will generate a new access token from
@@ -138,16 +143,23 @@ def logout() -> JSONType:
     """
     Endpoint for revoking the current access token.
     """
+    # A JWT's "jti" (JWT ID) is a unique identifier for that token.
+    # We get the jti of the token being used to access this endpoint...
     jti = get_jwt()["jti"]
+    # ...and add it to the blocklist. Now, this specific token can't be used again.
     BLOCKLIST.add(jti)
     return jsonify({"msg": "Access token revoked"}), 200
 
 @library_bp.route('/api/v1/books/users/logout_refresh', methods=['DELETE'])
-@jwt_required(refresh=True)
+# This endpoint is also protected with a refresh token, following the updated
+# decorator syntax for Flask-JWT-Extended v4.0+.
+@jwt_required(refresh=True) 
 def logout_refresh() -> JSONType:
     """
     Endpoint for revoking the current refresh token.
     """
+    # Just like with the access token logout, we get the refresh token's jti...
     jti = get_jwt()["jti"]
+    # ...and add it to the blocklist to revoke it.
     BLOCKLIST.add(jti)
     return jsonify({"msg": "Refresh token revoked"}), 200

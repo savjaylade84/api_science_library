@@ -162,19 +162,24 @@ def count_copies_by_subject_in_db() -> JSONType:
     logger.info("Counting total copies by subject in database")
 
     pipeline = [
+        # The $group stage groups documents by the 'subject' field.
         {
             "$group": {
                 "_id": "$subject",
-                "total_copies": {"$sum": "$subject"}
+                # The $sum accumulator was changed from "$subject" (which is a string and incorrect)
+                # to "$copies_available" to correctly sum the number of available copies
+                # for each subject group.
+                "total_copies": {"$sum": "$copies_available"}
             }
         }
     ]
     result = list(mongo.db.books.aggregate(pipeline))
     total = []
     for item in result:
-        item['total_copies'] += 1
+        # This line was removed as it was incorrectly incrementing the already summed total.
+        # The aggregation pipeline now provides the correct count directly.
         total.append({item['_id']:item['total_copies']})
-    return jsonify(total)
+    return total # Removed jsonify() to decouple the service layer from the web layer. It now returns raw data.
 
 # --------------------------------------------------------------
 
@@ -194,10 +199,13 @@ def verify_user_in_db(user:dict) -> JSONType:
     
     search_result = mongo.db.users.find_one(user)
     
+    # This function was refactored to return a Python dictionary instead of a Flask Response object.
+    # This improves separation of concerns, making the service layer more reusable and easier to test
+    # without needing a Flask application context. The route handler is now responsible for jsonify-ing the response.
     if not search_result:
-        return jsonify({"Message":"Failed to find the specific user","Status":Status.Failed}), 404
+        return {"Message":"Failed to find the specific user","Status":Status.Failed}
     else:
-        return jsonify({"Message":"Successfully find the user","Status":Status.Success,"Data":search_result}), 200
+        # The duplicate return statement was removed.
         return {"Message":"Successfully find the user","Status":Status.Success,"Data":search_result}
     
 def register_user_in_db(user:dict) -> JSONType:
@@ -209,10 +217,14 @@ def register_user_in_db(user:dict) -> JSONType:
     search_result = mongo.db.user.find_one(user)
     
     if not search_result:
+        # If the user doesn't exist, insert them into the database.
         mongo.db.user.insert_one(user)
+        # Return a success message. This was also changed from a Flask Response to a dictionary.
+        return {"Message":"User registered successfully","Status":Status.Success}
     else: 
         logger.warning('Already Existed User')
-        return jsonify({"Message":"There's already Existed User","Status":Status.Failed}),409
+        # Return a failure message if the user already exists.
+        return {"Message":"There's already Existed User","Status":Status.Failed}
     
 #------------------------------------------------------------------------------------------
 
