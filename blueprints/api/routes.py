@@ -1,7 +1,11 @@
 from flask import jsonify,request
 from marshmallow import ValidationError
 from .services import *
+
 from . import *
+
+# Define BLOCKLIST here for now, assuming it's not defined elsewhere in the provided context.
+BLOCKLIST = set()
 
 # this will add book in the database
 @library_bp.route('/api/v1/books/manage/append', methods=['POST'])
@@ -96,16 +100,54 @@ def count_books_by_subject() -> JSONType:
     return count_copies_by_subject_in_db()
 
 @library_bp.route('/api/v1/books/users/identify_current_user',methods=['GET'])
+@library_bp.route('/api/v1/books/users/identify_current_user',methods=['POST']) # Changed to POST for security
 def identify_current_user() -> JSONType:
-    
-    username = request.args.get('username',type=str)
-    password = request.args.get('password',type=str)
+    # For POST requests, get data from JSON body
+    if request.is_json:
+        username = request.json.get('username', None)
+        password = request.json.get('password', None)
+    else:
+        return jsonify({'Error': 'Request must be JSON'}), 415
     
     if username and password:
         result = verify_user_in_db({"username":username,"password":password})
-        if result and Status.Success in result['Status']:
-            access_token = create_access_token(identity=username,expires_delta=timedelta(hours=1))
-            current_user = get_jwt_identity()
-            return jsonify(access_token=access_token,current_user=current_user),200
+        # Assuming verify_user_in_db returns a dictionary with 'Status' and 'Data'
+        if result and result.get('Status') == Status.Success:
+            # Create the tokens
+            access_token = create_access_token(identity=username)
+            refresh_token = create_refresh_token(identity=username)
+            return jsonify(access_token=access_token, refresh_token=refresh_token), 200
         else:
             return jsonify({'Error': 'Invalid username or password'}), 401
+    return jsonify({'Error': 'Missing username or password'}), 400
+
+@library_bp.route('/api/v1/books/users/refresh_token', methods=['POST'])
+@jwt_required(refresh=True)
+def refresh_token() -> JSONType:
+    """
+    Refresh token endpoint. This will generate a new access token from
+    a valid refresh token.
+    """
+    current_user = get_jwt_identity()
+    new_access_token = create_access_token(identity=current_user)
+    return jsonify(access_token=new_access_token), 200
+
+@library_bp.route('/api/v1/books/users/logout', methods=['DELETE'])
+@jwt_required()
+def logout() -> JSONType:
+    """
+    Endpoint for revoking the current access token.
+    """
+    jti = get_jwt()["jti"]
+    BLOCKLIST.add(jti)
+    return jsonify({"msg": "Access token revoked"}), 200
+
+@library_bp.route('/api/v1/books/users/logout_refresh', methods=['DELETE'])
+@jwt_required(refresh=True)
+def logout_refresh() -> JSONType:
+    """
+    Endpoint for revoking the current refresh token.
+    """
+    jti = get_jwt()["jti"]
+    BLOCKLIST.add(jti)
+    return jsonify({"msg": "Refresh token revoked"}), 200

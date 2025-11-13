@@ -198,6 +198,7 @@ def verify_user_in_db(user:dict) -> JSONType:
         return jsonify({"Message":"Failed to find the specific user","Status":Status.Failed}), 404
     else:
         return jsonify({"Message":"Successfully find the user","Status":Status.Success,"Data":search_result}), 200
+        return {"Message":"Successfully find the user","Status":Status.Success,"Data":search_result}
     
 def register_user_in_db(user:dict) -> JSONType:
     
