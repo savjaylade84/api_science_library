@@ -64,3 +64,16 @@
 2025-11-13 22:51:16,631 - [INFO] - blueprints/api/services.py:295 - Generating hash key
 2025-11-13 22:51:16,631 - [INFO] - blueprints/api/services.py:222 - Generating hash key
 2025-11-13 22:51:16,635 - [INFO] - blueprints/api/services.py:222 - Generating hash key
+2025-11-13 23:12:59,813 - [INFO] - blueprints/api/services.py:80 - Finding all books in database
+2025-11-13 23:12:59,839 - [INFO] - blueprints/api/services.py:61 - Searching books by author in database
+2025-11-13 23:12:59,871 - [INFO] - blueprints/api/services.py:71 - Searching books by subject in database
+2025-11-13 23:12:59,896 - [INFO] - blueprints/api/services.py:95 - Searching books by ISBN in database
+2025-11-13 23:12:59,926 - [INFO] - blueprints/api/services.py:105 - Searching books by publisher in database
+2025-11-13 23:12:59,959 - [INFO] - blueprints/api/services.py:115 - Searching books by title in database
+2025-11-13 23:12:59,989 - [INFO] - blueprints/api/services.py:125 - Searching books by year in database
+2025-11-13 23:13:00,020 - [INFO] - blueprints/api/services.py:135 - Searching books by copies available in database
+2025-11-13 23:13:00,028 - [INFO] - blueprints/api/services.py:280 - Generating token
+2025-11-13 23:13:00,028 - [INFO] - blueprints/api/services.py:188 - Finding user in database
+2025-11-13 23:13:00,031 - [INFO] - blueprints/api/services.py:307 - Generating hash key
+2025-11-13 23:13:00,032 - [INFO] - blueprints/api/services.py:234 - Generating hash key
+2025-11-13 23:13:00,035 - [INFO] - blueprints/api/services.py:234 - Generating hash key
