@@ -309,3 +309,9 @@ def generate_token(user:dict,purpose: KeyType) -> str:
     except Exception as e:
         logger.error("Failed to generate hash key or token")
         raise e("Failed to generate hash key or token")
+
+def decode_token() -> JSONType:
+    pass
+
+def verify_token(token:str) -> JSONType:
+    pass 
