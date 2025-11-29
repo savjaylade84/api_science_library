@@ -245,3 +245,4 @@ Author: John Jayson B. De Leon</br>
 Github: [savjaylade84](github.com/savjaylade84) </br>
 Email: [deleonjohnjayson@gmail.com](mailto:deleonjohnjayson@gmail.com) | [deleonjohnjayson@proton.me](mailto:deleonjohnjayson@proton.me) </br>
 Portfolio: [Jisun](https://savjalade84.pythonanywhere.com/)</br>
+Blog: [Jisun](https://www.facebook.com/profile.php?id=100067187880921)
