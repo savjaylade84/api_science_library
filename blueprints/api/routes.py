@@ -95,11 +95,11 @@ def find_copies(copies) -> JSONType:
 
 @library_bp.route('/api/v1/books/stats/total-copies',methods=['GET'])
 def count_books() -> JSONType:
-    return count_copies_in_db()
+    return jsonify(count_copies_in_db())
 
 @library_bp.route('/api/v1/books/stats/total-copies-by-subject',methods=['GET'])
 def count_books_by_subject() -> JSONType:
-    return count_copies_by_subject_in_db()
+    return jsonify(count_copies_by_subject_in_db())
 
 @library_bp.route('/api/v1/books/users/identify_current_user',methods=['GET'])
 @library_bp.route('/api/v1/books/users/identify_current_user',methods=['POST']) # Changed to POST for security

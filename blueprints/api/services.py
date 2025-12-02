@@ -16,6 +16,8 @@ def append_book_in_db(book:dict) -> JSONType:
         logger.warning("Empty book data provided.")
         raise ValueError("Empty Value")
 
+    # check if id is existed if not then the data is for new book information
+    # then generate id for the new book
     if "id" not in book:
         logger.info("Generating random ID for new book")
         book:dict = {"id":generate_random_id(10), **book}
@@ -26,7 +28,7 @@ def append_book_in_db(book:dict) -> JSONType:
 
     mongo.db.books.insert_one(book)
     logger.info("Book added successfully!")
-    return {"Message": "Book added successfully!", "book_id": book["id"]}
+    return {"Message": "Book added successfully!","Status":Status.Success, "book_id": book["id"]}
 
 def delete_book_in_db(id:int) -> JSONType:
 
@@ -41,10 +43,10 @@ def delete_book_in_db(id:int) -> JSONType:
 
     if result.deleted_count:
         logger.info("Book deleted successfully!")
-        return {"Message": "Book deleted successfully!"}
+        return {"Message": "Book deleted successfully!","Status":Status.Success}
     else:
         logger.warning("Book not found!")
-        return {"Error": "Book not found!"}, 404
+        return {"Message": "Book not found!","Status":Status.Failure}, 404
 
 def search_books_in_db(query:dict) -> JSONType:
 
@@ -54,7 +56,8 @@ def search_books_in_db(query:dict) -> JSONType:
         logger.warning("Empty query provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find(query)
+    logger.info("Books found!")
+    return {"Message":"Books found!","Status":Status.Success,"Data": mongo.db.books.find(query)}
 
 def find_author_in_db(author:str) -> JSONType:
 
@@ -64,7 +67,8 @@ def find_author_in_db(author:str) -> JSONType:
         logger.warning("Empty author provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find({"author":author})
+    logger.info(f"Author: {author} Books found!")
+    return {"Message":f" Author:{author} Books found!","Status":Status.Success,"Data": mongo.db.books.find({"author":author})}
 
 def find_subject_in_db(subject:str) -> JSONType:
 
@@ -74,11 +78,12 @@ def find_subject_in_db(subject:str) -> JSONType:
         logger.warning("Empty subject provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find({"subject":subject})
+    logger.info(f"Subject: {subject} Books found!")
+    return {"Message":f" Subject:{subject} Books found!","Status":Status.Success,"Data": mongo.db.books.find({"subject":subject})}
 
 def find_all_in_db() -> JSONType:
     logger.info("Finding all books in database")
-    return mongo.db.books.find()
+    return {"Message":"All books found!","Status":Status.Success,"Data": mongo.db.books.find()}
 
 def find_id_in_db(id:int) -> JSONType:
 
@@ -88,7 +93,8 @@ def find_id_in_db(id:int) -> JSONType:
         logger.warning("Empty ID provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find_one({"id": id})
+    logger.info(f"ID: {id} Book found!")
+    return {"Message": f"ID:{id}Book found!","Status":Status.Success,"Data": mongo.db.books.find_one({"id": id})}
 
 def find_isbn_in_db(isbn:str) -> JSONType:
 
@@ -98,7 +104,8 @@ def find_isbn_in_db(isbn:str) -> JSONType:
         logger.warning("Empty ISBN provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find({"isbn":isbn})
+    logger.info(f"ISBN: {isbn} Books found!")
+    return {"Message": f"ISBN:{isbn} Books found!","Status":Status.Success,"Data": mongo.db.books.find({"isbn":isbn})}
 
 def find_publisher_in_db(publisher:str) -> JSONType:
 
@@ -108,7 +115,8 @@ def find_publisher_in_db(publisher:str) -> JSONType:
         logger.warning("Empty publisher provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find({"publisher":publisher})
+    logger.info(f"Publisher: {publisher} Books found!")
+    return {"Message": f"Publisher:{publisher} Books found!","Status":Status.Success,"Data": mongo.db.books.find({"publisher":publisher})}
 
 def find_title_in_db(title:str) -> JSONType:
 
@@ -118,7 +126,8 @@ def find_title_in_db(title:str) -> JSONType:
         logger.warning("Empty title provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find({"title":title})
+    logger.info(f"Title: {title} Books found!")
+    return {"Message": f"Title:{title} Books found!","Status":Status.Success,"Data": mongo.db.books.find({"title":title})}
 
 def find_year_in_db(year:int) -> JSONType:
 
@@ -128,7 +137,8 @@ def find_year_in_db(year:int) -> JSONType:
         logger.warning("Empty year provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find({"year":year})
+    logger.info(f"Year: {year} Books found!")
+    return {"Message": f"Year:{year} Books found!","Status":Status.Success,"Data":mongo.db.books.find({"year":year})}
 
 def find_copies_in_db(copies:int) -> JSONType:
 
@@ -138,7 +148,8 @@ def find_copies_in_db(copies:int) -> JSONType:
         logger.warning("Empty copies provided.")
         raise ValueError("Empty Value")
 
-    return mongo.db.books.find({"copies_available":copies})
+    logger.info(f"Copies: {copies} Books found!")
+    return {"Message": f"Copies:{copies} Books found!","Status":Status.Success,"Data":mongo.db.books.find({"copies_available":copies})}
 
 def count_copies_in_db() -> JSONType:
 
@@ -155,7 +166,8 @@ def count_copies_in_db() -> JSONType:
 
     result = list(mongo.db.books.aggregate(pipeline))
     total_copies = result[0]['total_copies'] if result else 0
-    return {"total_copies": total_copies}
+    logger.info(f"Total copies counted: {total_copies}")
+    return {"Message": "Total copies counted","Status":Status.Success,"Data":{"total_copies": total_copies}}
 
 def count_copies_by_subject_in_db() -> JSONType:
 
@@ -179,7 +191,9 @@ def count_copies_by_subject_in_db() -> JSONType:
         # This line was removed as it was incorrectly incrementing the already summed total.
         # The aggregation pipeline now provides the correct count directly.
         total.append({item['_id']:item['total_copies']})
-    return total # Removed jsonify() to decouple the service layer from the web layer. It now returns raw data.
+        
+    logger.info("Total copies by subject counted")
+    return {"Message": "Total copies by subject counted","Status":Status.Success,"Data": total}
 
 # --------------------------------------------------------------
 
@@ -189,7 +203,9 @@ def find_user_in_db(user:dict) -> JSONType:
     if not user:
         logger.warning("Empty user data provided.")
         raise ValueError("Empty Value")
-    return mongo.db.user.find_one(user)
+    
+    logger.info("User information found")
+    return {"Message": "User information found","Status":Status.Success,"Data": mongo.db.user.find_one(user)}
 
 def verify_user_in_db(user:dict) -> JSONType:
     
