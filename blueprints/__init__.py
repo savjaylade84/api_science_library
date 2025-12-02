@@ -3,6 +3,7 @@ from typing import Any, TypeAlias
 from marshmallow import Schema,fields
 from datetime import datetime,timedelta
 from ..extension import mongo
+from dataclasses import dataclass
 from enum import Enum
 from werkzeug.security import generate_password_hash, check_password_hash
 from .log import setup_logger,log_type
@@ -41,7 +42,8 @@ class KeyType(Enum):
     SUPER_KEY = 1
     SECRET_KEY = 2
 
-class Status (Enum):
+@dataclass
+class Status:
     Success:str = "Success"
     Failed:str = "Failed"
     Pending:str = "Pending"

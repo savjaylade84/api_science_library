@@ -1,8 +1,8 @@
 import pytest 
 from  ..app import create_app
-from  ..blueprints.website import services as services_web
 from  ..blueprints.api import services as services_api
-from ..blueprints import generate_random_id
+from ..blueprints.website import services as services_wb
+from ..blueprints import *
 
 #this a  script for automated testing the api endspoints using pytest framework
 
@@ -31,58 +31,64 @@ def test_view_all(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/view_all')
     print_test_header("test_view_all", "client.get", f"send all the data of the books",capsys)
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 
 def test_find_author(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/author/Thomas S. Kuhn')
     print_test_header("test_find_author", "client.get", f"Response: {response.get_json()}", capsys)
-    assert "Thomas S. Kuhn" in response.get_data(as_text=True)
+    for info in response.get_json()['Data']:
+        assert info['author'] == 'Thomas S. Kuhn'
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 def test_find_subject(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/subject/Genetics')
     print_test_header("test_find_subject", "client.get", f"Response: {response.get_json()}", capsys)
-    assert "Genetics" in response.get_data(as_text=True)
+    for info in response.get_json()['Data']:
+        assert info['subject'] == 'Genetics'
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 def test_find_isbn(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/isbn/9780743216302')
     print_test_header("test_find_isbn", "client.get", f"Response: {response.get_json()}", capsys)
-    assert "9780743216302" in response.get_data(as_text=True)
+    for info in response.get_json()['Data']:
+        assert info['isbn'] == '9780743216302'
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 def test_find_publisher(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/publisher/Mariner Books')
     print_test_header("test_find_publisher", "client.get", f"Response: {response.get_json()}", capsys)
-    assert "Mariner Books" in response.get_data(as_text=True)
+    for info in response.get_json()['Data']:
+        assert info['publisher'] == 'Mariner Books'
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 def test_find_title(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/title/The Structure of Scientific Revolutions')
     print_test_header("test_find_title", "client.get", f"Response: {response.get_json()}", capsys)
-    assert "The Structure of Scientific Revolutions" in response.get_data(as_text=True)
+    for info in response.get_json()['Data']:
+        assert info['title'] == 'The Structure of Scientific Revolutions'
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 def test_find_year(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/year/1996')
     print_test_header("test_find_year", "client.get", f"Response: {response.get_json()}",capsys)
-    for item in response.get_json():
-        assert item['year'] == 1996
+    for item in response.get_json()['Data']:
+        assert item.get('year') == 1996
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 def test_find_copies(client, capsys) -> None:
     response = client.get('/api/v1/books/filter/copies/5')
     print_test_header("test_find_copies", "client.get", f"Response: {response.get_json()}",capsys)
-    assert "5" in response.get_data(as_text=True)
+    for info in response.get_json()['Data']:
+        assert info['copies_available'] == 5
     assert response.status_code == 200
-    assert isinstance(response.get_json(), list)
+    assert isinstance(response.get_json(), dict)
 
 def test_generate_random_id(capsys) -> None:
     random_id = generate_random_id(10)
@@ -96,7 +102,7 @@ def test_generate_payload(capsys) -> None:
     assert isinstance(payload,dict)
 
 def test_generate_token(capsys) -> None:
-    token = services_api.generate_token({"user_id":123,"username":"test"},services_api.KeyType.SUPER_KEY)
+    token = services_api.generate_token({"user_id":123,"username":"test"},purpose=services_api.KeyType.SUPER_KEY)
     print_test_header("test_generate_token", "services.generate_token", f"Generated Mock Token: {token}", capsys)
     assert isinstance(token,str)
 

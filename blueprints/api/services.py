@@ -82,7 +82,7 @@ def find_subject_in_db(subject:str) -> JSONType:
     return {"Message":f" Subject:{subject} Books found!","Status":Status.Success,"Data": mongo.db.books.find({"subject":subject})}
 
 def find_all_in_db() -> JSONType:
-    logger.info("Finding all books in database")
+    logger.info(f"Finding all books in database")
     return {"Message":"All books found!","Status":Status.Success,"Data": mongo.db.books.find()}
 
 def find_id_in_db(id:int) -> JSONType:
@@ -204,6 +204,10 @@ def find_user_in_db(user:dict) -> JSONType:
         logger.warning("Empty user data provided.")
         raise ValueError("Empty Value")
     
+    if mongo.db.user.find_one(user) is None:
+        logger.warning("User information not found")
+        return {"Message": "User information not found","Status":Status.Failed}
+    
     logger.info("User information found")
     return {"Message": "User information found","Status":Status.Success,"Data": mongo.db.user.find_one(user)}
 
@@ -263,6 +267,12 @@ def generate_hash_key(payload:dict,super_key:str) -> str:
     
 def generate_payload(user:dict,purpose: KeyType,isNewUser:bool=False) -> JSONType:
 
+    payload:dict = {
+        "user_id": user['user_id'],
+        "username": user['username'],
+        "super_key": None
+    }
+
     if not user:
         logger.warning('Empty user provided')
         raise ValueError('Empty User Provided')
@@ -271,18 +281,11 @@ def generate_payload(user:dict,purpose: KeyType,isNewUser:bool=False) -> JSONTyp
         logger.warning('Empty purpose provided')
         raise ValueError('Empty Purpose')
     
+    
     if isNewUser is False:
-        payload:dict = {
-                "user_id": user['user_id'],
-                "username": user['username'],
-                "super_key": user['tokens']['super_key']
-        }
+        payload['super_key'] = user['tokens']['super_key']
     else:
-        payload = {
-                "user_id": user['user_id'],
-                "username": user['username'],
-                "super_key": generate_random_id(25,"#@&%*")
-        }
+        payload["super_key"] = generate_random_id(25,"#@&%*")
 
     if purpose is KeyType.SECRET_KEY:
         today: datetime = datetime.now() + datetime.timedelta(hours=3) 
@@ -308,9 +311,9 @@ def generate_token(user:dict,purpose: KeyType) -> str:
     
     # check if there's a user with the same information
     # then act accordingly
-    if find_user_in_db(user):
+    if find_user_in_db(user)['Status'] is Status.Success:
         logger.info("User found in database")
-        acc = find_user_in_db(user)
+        acc = find_user_in_db(user)['Data']
         payload = generate_payload(user=acc,purpose=KeyType.SUPER_KEY,isNewUser=False)
     else:
         if purpose is KeyType.SUPER_KEY:
